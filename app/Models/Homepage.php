@@ -9,7 +9,7 @@ class Homepage extends Model
 {
     use HasFactory;
 
-    protected $table = 'homepage'; // Nama tabel di database
+    protected $table = 'homepage';
     
     protected $fillable = [
         'nama_website',
