@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
       <a href="/dashboard-admin" class="app-brand-link">
-        <img src="../img/logo2.png" alt="logo" style="width: 50px">
+        <img src="{{ asset('storage/' . $data->logo) }}" alt="logo" style="width: 50px">
         <span class="app-brand-text demo menu-text fw-bold fs-4 ms-3">
           <span class="fs-6 fw-normal">Desa</span><br>
           <span style="color: #28a745;">Palalang</span>

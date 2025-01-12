@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PerangkatDesa extends Model
+class Video extends Model
 {
     use HasFactory;
 
-    
-    protected $table = 'perangkat_desa';
+    protected $table = 'publikasi_video';
     protected $fillable = [
-        'nama_perangkat',
-        'jabatan',
-        'foto_perangkat'
+        'judul_video',
+        'video_url',
+        'deskripsi'
     ];
 
     public $timestamps = true;

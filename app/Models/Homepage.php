@@ -9,21 +9,32 @@ class Homepage extends Model
 {
     use HasFactory;
 
-    protected $table = 'homepage';
-    
+    // Nama tabel di database
+    protected $table = 'homepages';
+
+    // Primary key custom (bukan 'id' default)
+    protected $primaryKey = 'id_homepage';
+
+    // Nonaktifkan timestamps
+    public $timestamps = false;
+
+    // Kolom yang dapat diisi secara massal
     protected $fillable = [
         'nama_website',
         'logo',
-        'banner',
-        'video_yt_link',
+        'banner_1',
+        'banner_2',
+        'banner_3',
+        'link_video',
         'sejarah_singkat',
-        'tentang_kami',
+        'tentang_desa',
+        'pelayanan',
         'alamat_desa',
         'no_kontak',
         'email_desa',
-        'fb_link',
-        'ig_link',
-        'yt_link',
-        'tiktok_link'
+        'link_tiktok',
+        'link_facebook',
+        'link_youtube',
+        'link_instagram',
     ];
 }

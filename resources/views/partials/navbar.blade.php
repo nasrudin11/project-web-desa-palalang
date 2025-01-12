@@ -3,8 +3,8 @@
     <div class="container">
         <!-- Navbar Brand -->
         <a class="navbar-brand text-white d-flex align-items-center" href="/">
-            <img src="/img/logo2.png" alt="Logo" class="img-fluid me-2" style="height: 35px; width: auto;">
-            <b>Desa Palalang</b>
+            <img src="{{ asset('storage/' . $data->logo) }}" alt="Logo" class="img-fluid me-2" style="height: 35px; width: auto;">
+            <b>{{ $data->nama_website }}</b>
         </a>
 
         <!-- Navbar Toggler Button -->

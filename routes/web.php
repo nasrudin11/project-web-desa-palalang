@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -66,4 +67,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-layouts-pemerintahan', [DashboardController::class, 'dashboardPemerintahan']);
 
     Route::get('/dashboard-pengaduan', [DashboardController::class, 'dashboardPengaduan']);
+
+
+    Route::post('/edit-navbar', [HomepageController::class, 'editNavbar']);
+    Route::post('/edit-banner', [HomepageController::class, 'editBanner']);
+    Route::post('/edit-konten', [HomepageController::class, 'editKonten']);
+    Route::post('/edit-footer', [HomepageController::class, 'editFooter']);
+
 });

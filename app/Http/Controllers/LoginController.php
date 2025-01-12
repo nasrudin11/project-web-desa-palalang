@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Homepage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,9 +10,10 @@ class LoginController extends Controller
 {
     public function index()
     {
+        $data = Homepage::first();
         return view('login', [
             'title' => 'Login'
-        ]);
+        ], compact('data'));
     }
 
     public function authenticate(Request $request)
@@ -38,7 +40,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-
         request()->session()->invalidate();
 
         request()->session()->regenerateToken();

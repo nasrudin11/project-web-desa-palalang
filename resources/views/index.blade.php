@@ -15,21 +15,21 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('/img/banner1.jpg') no-repeat center center; background-size: cover;">
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
                     <h1 class="text-white">Welcome to Our Website</h1>
                 </div>
             </div>                              
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('/img/banner2.jpg') no-repeat center center; background-size: cover;">
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
                     <h1 class="text-white">Explore Our Features</h1>
                 </div>
             </div>
             <!-- Slide 3 -->
             <div class="carousel-item">
                 <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('/img/banner3.jpg') no-repeat center center; background-size: cover;">
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
                     <h1 class="text-white">Join Us Today</h1>
                 </div>
             </div>
@@ -75,21 +75,15 @@
         <div class="row">
             <!-- Embed Map -->
             <div class="col-md-6 mb-4" data-aos="fade-right" data-aos-duration="1000">
-                <div class="map-container">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/3DyfLkUmMzA?si=TLvqCMtF0eM7Du68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                    </iframe>
+                <div class="ratio ratio-16x9">
+                    {!!  $data->link_video !!}
                 </div>       
             </div>
 
             <!-- Sejarah Desa -->
             <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
                 <h4>Sejarah</h4>
-                <p>
-                    Desa Palalang berasal dari pecahan Desa Somalang, dengan berbagai versi cerita mengenai asal-usulnya. Desa ini dipercaya sebagai hasil pembabatan hutan oleh dua tokoh: Buyut Husein di Palalang Utara dan Buyut Paranjak di Palalang Selatan, yang keduanya merupakan keturunan Al-Ashar dan pertapa di Gunung Pasekaran. Desa ini dinamakan Palalang karena wilayahnya yang dipenuhi rumput dan lalang.
-                </p>
-                <p>
-                    Pada zaman Belanda, Palalang terbagi menjadi dua pedukuhan, masing-masing dipimpin oleh seorang dukuh. Setelah bergabung pada era Orde Baru, Desa Palalang terbagi menjadi empat dusun: Dusun Sorok, Pogag, Pandiyan, dan Palalang.
-                </p>
+                {!! $data->sejarah_singkat !!}
             </div>
         </div>
     </div>

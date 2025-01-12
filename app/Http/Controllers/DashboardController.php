@@ -2,59 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Homepage;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view ('admin.index', [
-            'title' => 'Dashboard'
-        ]);
+        $data = Homepage::first();
+        return view ('admin.index', ['title' => 'Dashboard'], compact('data'));
     }
 
     public function dashboardHomepage()
     {
-        return view('admin.lay-homepage', ['title' => 'Hompage Layouts']);
+        $data = Homepage::first();   
+        return view('admin.lay-homepage', ['title' => 'Hompage Layouts'], compact('data'));
     }
 
     public function dashboardProfile()
     {
-        return view('admin.lay-profile', ['title' => 'Profile Layouts']);
+        $data = Homepage::first();
+        return view('admin.lay-profile', ['title' => 'Profile Layouts'], compact('data'));
     }
 
     public function dashboardPemerintahan()
     {
-        return view('admin.lay-pemerintahan', ['title' => 'Pemerintahan Layouts']);
+        $data = Homepage::first();
+        return view('admin.lay-pemerintahan', ['title' => 'Pemerintahan Layouts'], compact('data'));
     }
 
     public function dashboardFoto()
     {
-        return view('admin.foto', ['title' => 'Foto']);
+        $data = Homepage::first();
+        return view('admin.foto', ['title' => 'Foto'], compact('data'));
     }
 
     public function dashboardVideo()
     {
-        return view('admin.video', ['title' => 'Video']);
+        $data = Homepage::first();
+        return view('admin.video', ['title' => 'Video'], compact('data'));
     }
 
     public function dashboardBerita()
     {
-        return view('admin.berita', ['title' => 'Berita']);
+        $data = Homepage::first();
+        return view('admin.berita', ['title' => 'Berita'], compact('data'));
     }
 
     public function dashboardPengumuman()
     {
-        return view('admin.pengumuman', ['title' => 'Pengumuman']);
+        $data = Homepage::first();
+        return view('admin.pengumuman', ['title' => 'Pengumuman'], compact('data'));
     }
 
     public function dashboardPengaduan()
     {
-        return view('admin.pengaduan', ['title' => 'Pengaduan']);
+        $data = Homepage::first();
+        return view('admin.pengaduan', ['title' => 'Pengaduan'], compact('data'));
     }
 
     public function dashboardAdminProfile()
     {
-        return view('admin.profile', ['title' => 'Profile']);
+        $data = Homepage::first();
+        return view('admin.profile', ['title' => 'Profile'], compact('data'));
     }
 }

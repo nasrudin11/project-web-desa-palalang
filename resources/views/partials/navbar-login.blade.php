@@ -51,9 +51,13 @@ id="layout-navbar">
           <div class="dropdown-divider my-1"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="/">
+          <form action="/logout" method="post">
+              @csrf
+              <button type="submit" class="dropdown-item"><i class="bx bx-power-off bx-md me-3"></i>Logout</button>
+          </form>
+          {{-- <a class="dropdown-item" href="/logout">
             <i class="bx bx-power-off bx-md me-3"></i><span>Log Out</span>
-          </a>
+          </a> --}}
         </li>
       </ul>
     </li>
