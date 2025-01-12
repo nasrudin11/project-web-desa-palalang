@@ -1,0 +1,54 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05); 
+}
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Efek zoom out pada navbar */
+.navbar {
+    transition: top 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek perubahan warna navbar */
+.navbar.scrolled {
+    background-color: #50B498 !important; /* Hijau terang */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Menambahkan bayangan untuk efek kedalaman */
+}
+
+.navbar.transpare {
+    background-color: transparent !important;
+}
+
+/* Mengubah latar belakang offcanvas menjadi hijau */
+#offcanvasNavbar {
+    background-color: #50B498; /* Warna hijau terang */
+}
+
+/* Mengubah warna border tombol toggler menjadi putih */
+.navbar-toggler {
+    border-color: #ffffff; /* Border tombol menjadi putih */
+}
+
+/* Mengubah warna ikon close menjadi putih */
+.btn-close {
+    filter: invert(1) sepia(0) saturate(0) hue-rotate(180deg);
+}
