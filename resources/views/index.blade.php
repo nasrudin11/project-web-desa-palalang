@@ -22,14 +22,14 @@
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_2) }}') no-repeat center center; background-size: cover;">
                     <h1 class="text-white">Explore Our Features</h1>
                 </div>
             </div>
             <!-- Slide 3 -->
             <div class="carousel-item">
                 <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_3) }}') no-repeat center center; background-size: cover;">
                     <h1 class="text-white">Join Us Today</h1>
                 </div>
             </div>

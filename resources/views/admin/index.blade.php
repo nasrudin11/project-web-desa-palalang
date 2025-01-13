@@ -39,7 +39,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Pengunjung</h5>
-                        <h2 class="text-primary mb-0">123</h2>
+                        <h2 class="text-primary mb-0">0</h2>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Pengunjung Total</h5>
-                        <h2 class="text-success mb-0">12,345</h2>
+                        <h2 class="text-success mb-0">0</h2>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Berita</h5>
-                        <h2 class="text-info mb-0">56</h2>
+                        <h2 class="text-info mb-0">0</h2>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Pengumuman</h5>
-                        <h2 class="text-warning mb-0">8</h2>
+                        <h2 class="text-warning mb-0">0</h2>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Total Pengaduan</h5>
-                        <h2 class="text-danger mb-0">15</h2>
+                        <h2 class="text-danger mb-0">0</h2>
                     </div>
                 </div>
             </div>

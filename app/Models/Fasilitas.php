@@ -10,10 +10,11 @@ class Fasilitas extends Model
     use HasFactory;
 
     protected $table = 'fasilitas';
+    protected $primaryKey = 'id_fasilitas';
+    public $timestamps = false;
     protected $fillable = [
-        'nama_fasilits',
+        'nama_fasilitas',
         'foto_fasilitas'
     ];
 
-    public $timestamps = true;
 }

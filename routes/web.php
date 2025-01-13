@@ -4,6 +4,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PemerintahanController;
+use App\Http\Controllers\ProfilDesaController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -73,5 +75,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-banner', [HomepageController::class, 'editBanner']);
     Route::post('/edit-konten', [HomepageController::class, 'editKonten']);
     Route::post('/edit-footer', [HomepageController::class, 'editFooter']);
+
+    Route::post('/update-visi-misi', [ProfilDesaController::class, 'updateVisiMisi']);
+    Route::post('/update-sejarah', [ProfilDesaController::class, 'updateSejarah']);
+    Route::post('/update-link-peta', [ProfilDesaController::class, 'updateLinkPeta']);
+
+    Route::post('/store-fasilitas', [ProfilDesaController::class, 'storeFasilitas']);
+    Route::put('/edit-fasilitas/{id}', [ProfilDesaController::class, 'updateFasilitas']);
+    Route::delete('/delete-fasilitas/{id}', [ProfilDesaController::class, 'deleteFasilitas']);
+
+    Route::put('/update-struktur', [PemerintahanController::class, 'updateStruktur']);
 
 });

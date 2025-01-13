@@ -9,8 +9,10 @@ class StrukturOrganisasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'struktur_organisasi';
+    protected $table = 'struktur_organisasis';
+    protected $primaryKey = 'id_struktur';
+    public $timestamps = false;
+    
     protected $fillable = ['nama_gambar'];
 
-    public $timestamps = true;
 }

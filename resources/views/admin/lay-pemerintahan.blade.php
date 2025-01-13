@@ -3,15 +3,24 @@
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
+     <!-- Pesan Sukses -->
+     @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <!-- Section Navbar -->
     <div class="card">
         <div class="card-body">
             <h5>Struktur Organisasi</h5>
-            <form action="" method="post">
+            <form action="/update-struktur" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="d-flex align-items-center gap-3 mb-3">
-                    <label for="logo" class="form-label mb-0" style="min-width: 120px;">File Gambar</label>
-                    <input type="file" name="logo" id="logo" class="form-control">
+                    <label for="gambar_struktur" class="form-label mb-0" style="min-width: 120px;">File Gambar</label>
+                    <input type="file" name="gambar_struktur" id="gambar_struktur" class="form-control">
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>

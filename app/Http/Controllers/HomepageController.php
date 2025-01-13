@@ -120,10 +120,10 @@ class HomepageController extends Controller
             'alamat' => 'nullable|string|max:150',
             'nomor_kontak' => 'nullable|string|max:15',
             'email' => 'nullable|email|max:50',
-            'link_instagram' => 'nullable|string',
-            'link_tiktok' => 'nullable|string',
-            'link_youtube' => 'nullable|string',
-            'link_facebook' => 'nullable|string',
+            'link_instagram' => 'nullable|string|max:255',
+            'link_tiktok' => 'nullable|string|max:255',
+            'link_youtube' => 'nullable|string|max:255',
+            'link_facebook' => 'nullable|string|max:255',
         ]);
         
         $data->tentang_desa = $request->tentang_desa ?: $data->tentang_desa;

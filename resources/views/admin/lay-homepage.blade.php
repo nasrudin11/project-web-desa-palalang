@@ -78,13 +78,13 @@
             </div>
             
             
-            <form action="/edit-banner" method="post" enctype="multipart/form-data">
+            <form action="/edit-banner" method="post" c>
                 @csrf
                 <div class="d-flex align-items-center  mb-3">
                     <label for="banner_1" class="form-label mb-0" style="min-width: 100px;">Banner 1</label>
                     <div class="w-100">
                         <input type="file" name="banner_1" id="banner_1" class="form-control  @error('banner_1') is-invalid @enderror">
-                        @error('banner_!')
+                        @error('banner_1')
                             <div class="invalid-feedback d-block">
                                 {{ $message }}
                             </div>
@@ -131,13 +131,21 @@
                     <label for="link_video" class="form-label mb-0" style="min-width: 100px;">Link Video</label>
                     <div class="w-100">
                         <textarea name="link_video" id="link_video" class="form-control  @error('link_video') is-invalid @enderror" required> {{ $data->link_video }}</textarea>
+                        @error('link_video')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="d-flex flex-column">
                     <label for="sejarah_singkat" class="form-label mb-2">Sejarah Desa Singkat</label>
-                    <div class="w-100">
-                        <textarea name="sejarah_singkat" id="editor" class="form-control  @error('sejarah_singkat') is-invalid @enderror" placeholder="Tulis sejarah desa">{{ $data->sejarah_singkat }}</textarea>
-                    </div>
+                    <textarea name="sejarah_singkat" id="editor" class="form-control @error('sejarah_singkat') is-invalid @enderror" placeholder="Tulis sejarah desa">{{ $data->sejarah_singkat }}</textarea>
+                    @error('sejarah_singkat')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
     
                 <div class="d-flex justify-content-end mt-3">
@@ -155,48 +163,114 @@
                 @csrf
                 <div class="mb-3">
                     <label for="tentang_desa" class="form-label mb-2" style="min-width: 100px;">Tentang Desa</label>
-                    <textarea name="tentang_desa" id="editorTentang" class="form-control" placeholder="Masukkan deskripsi tentang desa">{{ $data->tentang_desa }}</textarea>
+                    <textarea name="tentang_desa" id="editorTentang" class="form-control @error('tentang_desa') is-invalid @enderror" placeholder="Masukkan deskripsi tentang desa">{{ $data->tentang_desa }}</textarea>
+                    @error('tentang_desa')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                
                 </div>
     
                 <!-- Pelayanan -->
                 <div class="mb-3">
                     <label for="pelayanan" class="form-label mb-2" style="min-width: 100px;">Pelayanan</label>
-                    <textarea name="pelayanan" id="editorPelayanan" class="form-control" placeholder="Masukkan informasi pelayanan desa">{{ $data->pelayanan }}</textarea>
+
+                    <textarea name="pelayanan" id="editorPelayanan" class="form-control @error('tentang_desa') is-invalid @enderror" placeholder="Masukkan informasi pelayanan desa">{{ $data->pelayanan }}</textarea>
+                    @error('pelayanan')
+                        <div class="invalid-feedback d-block">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
     
                 <!-- Official Info -->
                 <div class="d-flex align-items-center  mb-3">
                     <label for="alamat" class="form-label mb-0" style="min-width: 100px;">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan alamat" value="{{ $data->alamat_desa }}">
+                    <div class="w-100">
+                        <input type="text" name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Masukkan alamat" value="{{ $data->alamat_desa }}">
+                        @error('pelayanan')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="nomor_kontak" class="form-label mb-0" style="min-width: 100px;">Nomor Kontak</label>
-                    <input type="text" name="nomor_kontak" id="nomor_kontak" class="form-control" placeholder="Masukkan nomor kontak" value="{{ $data->no_kontak }}">
+                    <div class="w-100">
+                        <input type="text" name="nomor_kontak" id="nomor_kontak" class="form-control @error('nomor_kontak') is-invalid @enderror" placeholder="Masukkan nomor kontak" value="{{ $data->no_kontak }}">
+                        @error('nomor_kontak')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                  
                 </div>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="email" class="form-label mb-0" style="min-width: 100px;">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan email" value="{{ $data->email_desa }}">
+                    <div class="w-100">
+                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan email" value="{{ $data->email_desa }}">
+                        @error('email')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    
                 </div>
     
                 <!-- Media Sosial -->
                 <h6 class="mt-4">Media Sosial</h6>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_instagram" class="form-label mb-0" style="min-width: 100px;">Instagram</label>
-                    <input type="text" name="link_instagram" id="link_instagram" class="form-control" placeholder="Link Instagram">
+                    <div class="w-100">
+                        <input type="text" name="link_instagram" id="link_instagram" class="form-control @error('link_instagram') is-invalid @enderror" placeholder="Link Instagram" value="{{ $data->link_instagram }}">
+                        @error('link_instagram')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_tiktok" class="form-label mb-0" style="min-width: 100px;">Tiktok</label>
-                    <input type="text" name="link_tiktok" id="link_tiktok" class="form-control" placeholder="Link Tiktok">
+                    <div class="w-100">
+                        <input type="text" name="link_tiktok" id="link_tiktok" class="form-control @error('link_tiktok') is-invalid @enderror" placeholder="Link Tiktok" value="{{ $data->link_tiktok }}">
+                        @error('link_tiktok')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                   
                 </div>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_youtube" class="form-label mb-0" style="min-width: 100px;">YouTube</label>
-                    <input type="text" name="link_youtube" id="link_youtube" class="form-control" placeholder="Link YouTube">
+                    <div class="w-100">
+                        <input type="text" name="link_youtube" id="link_youtube" class="form-control @error('link_youtube') is-invalid @enderror" placeholder="Link YouTube" value="{{ $data->link_youtube }}">
+                        @error('link_youtube')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                   
                 </div>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_facebook" class="form-label mb-0" style="min-width: 100px;">Facebook</label>
-                    <input type="text" name="link_facebook" id="link_facebook" class="form-control" placeholder="Link Facebook">
+                    <div class="w-100">
+                        <input type="text" name="link_facebook" id="link_facebook" class="form-control @error('link_facebook') is-invalid @enderror" placeholder="Link Facebook" value="{{ $data->link_facebook }}">
+                        @error('link_facebook')
+                            <div class="invalid-feedback d-block">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                   
                 </div>
-    
+
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </div>

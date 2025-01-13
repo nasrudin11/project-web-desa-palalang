@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fasilitas;
 use App\Models\Homepage;
+use App\Models\ProfilDesa;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -22,7 +24,10 @@ class DashboardController extends Controller
     public function dashboardProfile()
     {
         $data = Homepage::first();
-        return view('admin.lay-profile', ['title' => 'Profile Layouts'], compact('data'));
+        $profile = ProfilDesa::first();
+        $fasilitas = Fasilitas::all();
+
+        return view('admin.lay-profile', ['title' => 'Profile Layouts'], compact('data','profile','fasilitas'));
     }
 
     public function dashboardPemerintahan()
