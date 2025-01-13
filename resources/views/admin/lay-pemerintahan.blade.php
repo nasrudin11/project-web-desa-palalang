@@ -15,12 +15,26 @@
     <div class="card">
         <div class="card-body">
             <h5>Struktur Organisasi</h5>
-            <form action="/update-struktur" method="post" enctype="multipart/form-data">
+
+            <div class="text-center mb-2">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <img src="{{ asset('storage/' . $struktur->gambar_struktur) }}" alt="Logo" class="img-fluid rounded w-100">
+                    </div>
+                </div>
+            </div>
+
+            <form action="/store-perangkat-desa" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="d-flex align-items-center gap-3 mb-3">
                     <label for="gambar_struktur" class="form-label mb-0" style="min-width: 120px;">File Gambar</label>
-                    <input type="file" name="gambar_struktur" id="gambar_struktur" class="form-control">
+                    <input type="file" name="gambar_struktur" id="gambar_struktur" class="form-control @error('gambar_struktur') is-invalid @enderror">
+                    @error('gambar_struktur')
+                    <div class="invalid-feedback d-block">
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
@@ -41,37 +55,49 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="modalCenterTitle">Tambah Perangkat Desa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="modalCenterTitle">Tambah Perangkat Desa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="mb-2">
-                            <label for="nameWithTitle" class="form-label">Nama</label>
-                            <input type="text" id="nameWithTitle" class="form-control" placeholder="Masukkan judul" />
-                            
-                        </div>
-                        <div class="mb-2">
-                            <label for="emailWithTitle" class="form-label">File Foto</label>
-                            <input type="file" id="emailWithTitle" class="form-control"/>
-                        </div>
-                        <div class="mb-2">
-                            <div class="mb-4">
-                                <label for="exampleFormControlSelect1" class="form-label">Jabatan</label>
-                                <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                                  <option selected>Open this select menu</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
-                                </select>
+
+                    <form action="/store-perangkat-desa" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="nama_perangkat" class="form-label">Nama</label>
+                                <input type="text" id="nama_perangkat" name="nama_perangkat" class="form-control @error('nama_perangkat') is-invalid @enderror" placeholder="Masukkan judul" required/>
+                                @error('nama_perangkat')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="jabatan" class="form-label">Jabatan</label>
+                                <input type="text" id="jabatan" name="jabatan" class="form-control @error('jabatan') is-invalid @enderror" placeholder="Masukkan judul" required/>
+                                @error('jabatan')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="foto_perangkat" class="form-label">File Foto</label>
+                                <input type="file" id="foto_perangkat" name="foto_perangkat" class="form-control @error('foto_perangkat') is-invalid @enderror"/>
+                                @error('foto_perangkat')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                    
                 </div>
                 </div>
             </div>
@@ -88,44 +114,117 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Foto 1</td>
-                            <td>Nama</td>
-                            <td>Jabatan</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm shadow" data-bs-toggle="modal" data-bs-target="#editModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                                
-                                <button type="button" class="btn btn-danger btn-sm shadow" data-bs-toggle="modal" data-bs-target="#deleteProdukModal">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Foto</td>
-                            <td>nama</td>
-                            <td>Jabatan</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm shadow" data-bs-toggle="modal" data-bs-target="#editModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                                
-                                <button type="button" class="btn btn-danger btn-sm shadow" data-bs-toggle="modal" data-bs-target="#deleteProdukModal">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        @foreach ($perangkat as $index => $item)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>
+                                    @if ($item->foto_perangkat)
+                                        <img src="{{ asset('storage/' . $item->foto_perangkat) }}" alt="Foto Perangkat" width="100">
+                                    @else
+                                        Tidak ada foto
+                                    @endif
+                                </td>
+                                <td>{{ $item->nama_perangkat }}</td>
+                                <td>{{ $item->jabatan }}</td>
+                                <td>
+                                    <!-- Tombol Edit -->
+                                    <button class="btn btn-warning btn-sm shadow" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_perangkat }}">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                    
+                                    <!-- Tombol Hapus -->
+                                    <button type="button" class="btn btn-danger btn-sm shadow" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id_perangkat }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
+                    
                 </table>
             </div>
 
         </div>
     </div>
 </div>
+
+
+<!-- Modal Edit dan Hapus -->
+@if ($perangkat->isNotEmpty())
+    @foreach ($perangkat as $item)
+        <!-- Modal Edit -->
+        <div class="modal fade" id="editModal{{ $item->id_perangkat }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Perangkat Desa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="/edit-perangkat-desa/{{ $item->id_perangkat }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="nama_perangkat" class="form-label">Nama</label>
+                                <input type="text" id="nama_perangkat" name="nama_perangkat" value="{{ $item->nama_perangkat }}" class="form-control @error('nama_perangkat') is-invalid @enderror" />
+                                @error('nama_perangkat')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="jabatan" class="form-label">Jabatan</label>
+                                <input type="text" id="jabatan" name="jabatan" value="{{ $item->jabatan }}" class="form-control @error('jabatan') is-invalid @enderror" />
+                                @error('jabatan')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-2">
+                                <label for="foto_perangkat" class="form-label">File Foto</label>
+                                <input type="file" id="foto_perangkat" name="foto_perangkat" class="form-control @error('foto_perangkat') is-invalid @enderror" />
+                                @error('foto_perangkat')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Hapus -->
+        <div class="modal fade" id="deleteModal{{ $item->id_perangkat }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Konfirmasi Hapus</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus perangkat desa ini?</p>
+                        <form action="/delete-perangkat-desa/{{ $item->id_perangkat }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endif
+
 
 @endsection
 

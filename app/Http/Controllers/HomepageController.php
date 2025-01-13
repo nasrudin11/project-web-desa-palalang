@@ -97,7 +97,7 @@ class HomepageController extends Controller
         $data = Homepage::first();
         
         // Validasi input
-        $validated = $request->validate([
+        $request->validate([
             'link_video' => 'nullable|string',
             'sejarah_singkat' => 'nullable|string',
         ]);

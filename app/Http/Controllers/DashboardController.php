@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Fasilitas;
 use App\Models\Homepage;
+use App\Models\PerangkatDesa;
 use App\Models\ProfilDesa;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -33,7 +35,10 @@ class DashboardController extends Controller
     public function dashboardPemerintahan()
     {
         $data = Homepage::first();
-        return view('admin.lay-pemerintahan', ['title' => 'Pemerintahan Layouts'], compact('data'));
+        $struktur = StrukturOrganisasi::first();
+        $perangkat = PerangkatDesa::all();
+        
+        return view('admin.lay-pemerintahan', ['title' => 'Pemerintahan Layouts'], compact('data', 'struktur', 'perangkat'));
     }
 
     public function dashboardFoto()

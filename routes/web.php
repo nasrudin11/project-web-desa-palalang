@@ -86,4 +86,9 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/update-struktur', [PemerintahanController::class, 'updateStruktur']);
 
+    Route::post('/store-perangkat-desa', [PemerintahanController::class, 'storePerangkatDesa']);
+    Route::post('/edit-perangkat-desa/{id}', [PemerintahanController::class, 'editPerangkatDesa']);
+    Route::delete('/delete-perangkat-desa/{id}', [PemerintahanController::class, 'deletePerangkatDesa']);
+
+
 });

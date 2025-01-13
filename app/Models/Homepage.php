@@ -12,13 +12,10 @@ class Homepage extends Model
     // Nama tabel di database
     protected $table = 'homepages';
 
-    // Primary key custom (bukan 'id' default)
     protected $primaryKey = 'id_homepage';
 
-    // Nonaktifkan timestamps
     public $timestamps = false;
 
-    // Kolom yang dapat diisi secara massal
     protected $fillable = [
         'nama_website',
         'logo',

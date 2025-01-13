@@ -134,7 +134,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($fasilitas as $index => $item)
+                        @foreach ($fasilitas as $index => $item)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>
@@ -157,12 +157,9 @@
                                     </button>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center">Tidak ada data fasilitas</td>
-                            </tr>
-                        @endforelse
+                        @endforeach
                     </tbody>
+                    
                 </table>
             </div>
             
@@ -170,80 +167,87 @@
     </div>
 </div>
 
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal{{ $item->id_fasilitas }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCenterTitle">Edit Fasilitas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            
-            <!-- Gunakan method PUT dengan Blade -->
-            <form action="/edit-fasilitas/{{ $item->id_fasilitas }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="modal-body">
-                    <div class="mb-2">
-                        <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
-                        <input type="text" id="nama_fasilitas" name="nama_fasilitas" class="form-control  @error('nama_fasilitas') is-invalid @enderror" value="{{ $item->nama_fasilitas }}"/>
-                        @error('nama_fasilitas')
-                            <div class="invalid-feedback d-block">
-                                {{ $message }}
-                            </div>
-                        @enderror
+@if ($fasilitas->isNotEmpty())
+    @foreach ($fasilitas as $item)
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editModal{{ $item->id_fasilitas }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCenterTitle">Edit Fasilitas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="text-center mb-2">
-                        <div class="row justify-content-center">
-                            <div class="col-md-5">
-                                <img src="{{ asset('storage/' . $item->foto_fasilitas) }}" alt="Logo" class="img-fluid rounded w-100">
+                    
+                    <!-- Gunakan method PUT dengan Blade -->
+                    <form action="/edit-fasilitas/{{ $item->id_fasilitas }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="nama_fasilitas" class="form-label">Nama Fasilitas</label>
+                                <input type="text" id="nama_fasilitas" name="nama_fasilitas" class="form-control  @error('nama_fasilitas') is-invalid @enderror" value="{{ $item->nama_fasilitas }} required"/>
+                                @error('nama_fasilitas')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="text-center mb-2">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-5">
+                                        <img src="{{ asset('storage/' . $item->foto_fasilitas) }}" alt="Logo" class="img-fluid rounded w-100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <label for="foto" class="form-label">Foto Fasilitas</label>
+                                <input type="file" id="foto" name="foto_fasilitas" class="form-control  @error('foto') is-invalid @enderror"/>
+                                @error('foto')
+                                    <div class="invalid-feedback d-block">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="mb-2">
-                        <label for="foto" class="form-label">Foto Fasilitas</label>
-                        <input type="file" id="foto" name="foto_fasilitas" class="form-control  @error('foto') is-invalid @enderror"/>
-                        @error('foto')
-                            <div class="invalid-feedback d-block">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="deleteModal{{ $item->id_fasilitas }}" tabindex="-1" aria-labelledby="deleteProdukModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteProdukModalLabel">Konfirmasi Hapus</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- Form penghapusan fasilitas -->
-            <form action="/delete-fasilitas/{{ $item->id_fasilitas }}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <div class="modal-body">
-                    <p>Apakah Anda yakin ingin menghapus fasilitas ini?</p>
-                       
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
-                </div>
-            </form>
         </div>
-    </div>
-</div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal{{ $item->id_fasilitas }}" tabindex="-1" aria-labelledby="deleteProdukModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteProdukModalLabel">Konfirmasi Hapus</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Form penghapusan fasilitas -->
+                    <form action="/delete-fasilitas/{{ $item->id_fasilitas }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <div class="modal-body">
+                            <p>Apakah Anda yakin ingin menghapus fasilitas ini?</p>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endif
+
+
 
 
 @endsection
