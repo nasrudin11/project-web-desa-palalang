@@ -27,7 +27,7 @@
       <div class="card-body ">
         <h2 class="card-title">Visi & Misi</h2>
         <hr>
-        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque ducimus nemo odio eos hic beatae.</p>
+        <p class="card-text">{!! $profile->visi_misi !!}</p>
       </div>
     </div>
   </div>

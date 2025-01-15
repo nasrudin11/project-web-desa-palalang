@@ -50,14 +50,15 @@ class ProfilDesaController extends Controller
      }
  
      // Fungsi untuk mengupdate Link Peta
-     public function updateLinkPeta(Request $request)
+     public function updatePetaDesa(Request $request)
      {
          $profil = ProfilDesa::first();
          $request->validate([
-             'link_peta' => 'required|url',
-         ]);
- 
-         $profil->link_peta = $request->link_peta;
+            'peta_desa_url' => 'required|string',
+        ]);
+        
+         
+         $profil->peta_desa_url = $request->peta_desa_url;
          $profil->save();
  
          return back()->with('success', 'Link Peta berhasil diperbarui!');
@@ -127,7 +128,13 @@ class ProfilDesaController extends Controller
     public function deleteFasilitas($id)
     {
         $fasilitas = Fasilitas::findOrFail($id);
+       
+        if ($fasilitas->foto_fasilitas && Storage::exists('public/' . $fasilitas->foto_fasilitas)) {
+            Storage::delete('public/' . $fasilitas->foto_fasilitas);
+        }
+
         $fasilitas->delete();
+
         return redirect()->back()->with('success', 'Fasilitas berhasil dihapus.');
     }
 

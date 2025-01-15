@@ -11,9 +11,7 @@ class LoginController extends Controller
     public function index()
     {
         $data = Homepage::first();
-        return view('login', [
-            'title' => 'Login'
-        ], compact('data'));
+        return view('login', ['title' => 'Login'], compact('data'));
     }
 
     public function authenticate(Request $request)

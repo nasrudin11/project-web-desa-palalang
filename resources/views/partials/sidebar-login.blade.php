@@ -30,24 +30,24 @@
       <li class="menu-header small text-uppercase"><span class="menu-header-text">Menu</span></li>
 
       <!-- Layouts Homepage -->
-      <li class="menu-item {{ in_array($title, ['Homepage', 'Profile', 'Pemerintahan', 'Hubungi Kami']) ? 'open active' : '' }}">
+      <li class="menu-item {{ in_array($title, ['Homepage Layouts', 'Profile Layouts', 'Pemerintahan Layouts']) ? 'open active' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-layout"></i>
-          <div class="text-truncate {{ in_array($title, ['Homepage', 'Profile', 'Pemerintahan', 'Hubungi Kami']) ? 'active' : '' }}" data-i18n="Layouts">Layouts</div>
+          <div class="text-truncate {{ in_array($title, ['Homepage', 'Profile', 'Pemerintahan']) ? 'active' : '' }}" data-i18n="Layouts">Layouts</div>
         </a>
 
         <ul class="menu-sub">
-          <li class="menu-item {{ $title == 'Homepage' ? 'active' : '' }}">
+          <li class="menu-item {{ $title == 'Homepage Layouts' ? 'active' : '' }}">
             <a href="/dashboard-layouts-homepage" class="menu-link">
               <div class="text-truncate" data-i18n="Without menu">Homepage</div>
             </a>
           </li>
-          <li class="menu-item {{ $title == 'Profile' ? 'active' : '' }}">
+          <li class="menu-item {{ $title == 'Profile Layouts' ? 'active' : '' }}">
             <a href="/dashboard-layouts-profile" class="menu-link">
               <div class="text-truncate" data-i18n="Without menu">Profile</div>
             </a>
           </li>
-          <li class="menu-item {{ $title == 'Pemerintahan' ? 'active' : '' }}">
+          <li class="menu-item {{ $title == 'Pemerintahan Layouts' ? 'active' : '' }}">
             <a href="/dashboard-layouts-pemerintahan" class="menu-link">
               <div class="text-truncate" data-i18n="Without menu">Pemerintahan</div>
             </a>
@@ -56,14 +56,14 @@
       </li>
       
       <!-- Publikasi -->
-      <li class="menu-item {{ in_array($title, ['Galeri', 'Video', 'Berita', 'Pengumuman']) ? 'open active' : '' }}">
+      <li class="menu-item {{ in_array($title, ['Foto', 'Video', 'Berita', 'Pengumuman']) ? 'open active' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-          <div class="text-truncate {{ in_array($title, ['Galeri', 'Video', 'Berita', 'Pengumuman']) ? 'active' : '' }}" data-i18n="Misc">Publikasi</div>
+          <div class="text-truncate {{ in_array($title, ['Foto', 'Video', 'Berita', 'Pengumuman']) ? 'active' : '' }}" data-i18n="Misc">Publikasi</div>
         </a>
         <ul class="menu-sub">
-          <li class="menu-item {{ $title == 'Galeri' ? 'active' : '' }}">
-            <a href="/dashboard-galeri" class="menu-link">
+          <li class="menu-item {{ $title == 'Foto' ? 'active' : '' }}">
+            <a href="/dashboard-foto" class="menu-link">
               <div class="text-truncate" data-i18n="Error">Foto</div>
             </a>
           </li>

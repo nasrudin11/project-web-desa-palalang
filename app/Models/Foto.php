@@ -9,12 +9,13 @@ class Foto extends Model
 {
     use HasFactory;
 
-    protected $table = 'publikasi_foto';
+    protected $table = 'fotos';
+    protected $primaryKey = 'id_foto';
     protected $fillable = [
         'judul_foto',
         'deskripsi',
         'foto'
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

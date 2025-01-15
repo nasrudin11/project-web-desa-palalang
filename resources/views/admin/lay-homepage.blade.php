@@ -12,8 +12,21 @@
         </div>
     @endif
 
+    <div class="container py-3 px-4 rounded text-white" style="background-color: #D3F1DF;">
+        <nav style="--bs-breadcrumb-divider: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%278%27 height=%278%27%3E%3Cpath d=%27M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z%27 fill=%27%23000000%27/%3E%3C/svg%3E');" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none text-dark">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">
+                    Homepage Layouts
+                </li>
+            </ol>
+        </nav>
+    </div>
+
     <!-- Section Navbar -->
-    <div class="card">
+    <div class="card mt-4">
         <div class="card-body">
             <h5>Navbar</h5>
             <form action="/edit-navbar" method="POST" enctype="multipart/form-data">

@@ -9,7 +9,8 @@ class Publikasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'publikasi';
+    protected $table = 'publikasis';
+    protected $primaryKey = 'id_publikasi';
     protected $fillable = [
         'judul_publikasi',
         'jenis_publikasi',
@@ -17,5 +18,5 @@ class Publikasi extends Model
         'foto_publikasi'
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

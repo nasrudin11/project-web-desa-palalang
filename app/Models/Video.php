@@ -9,12 +9,13 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $table = 'publikasi_video';
+    protected $table = 'videos';
+    protected $primaryKey = 'id_video';
     protected $fillable = [
         'judul_video',
         'video_url',
         'deskripsi'
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 }

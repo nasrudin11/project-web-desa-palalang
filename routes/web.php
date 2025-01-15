@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemerintahanController;
 use App\Http\Controllers\ProfilDesaController;
+use App\Http\Controllers\PublikasiController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -69,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-layouts-pemerintahan', [DashboardController::class, 'dashboardPemerintahan']);
 
     Route::get('/dashboard-pengaduan', [DashboardController::class, 'dashboardPengaduan']);
+    Route::get('/dashboard-pengaduan-dtl', [DashboardController::class, 'dashboardPengaduanDtl']);
 
 
     Route::post('/edit-navbar', [HomepageController::class, 'editNavbar']);
@@ -76,9 +78,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-konten', [HomepageController::class, 'editKonten']);
     Route::post('/edit-footer', [HomepageController::class, 'editFooter']);
 
-    Route::post('/update-visi-misi', [ProfilDesaController::class, 'updateVisiMisi']);
-    Route::post('/update-sejarah', [ProfilDesaController::class, 'updateSejarah']);
-    Route::post('/update-link-peta', [ProfilDesaController::class, 'updateLinkPeta']);
+    Route::put('/update-visi-misi', [ProfilDesaController::class, 'updateVisiMisi']);
+    Route::put('/update-sejarah', [ProfilDesaController::class, 'updateSejarah']);
+    Route::put('/update-peta-desa', [ProfilDesaController::class, 'updatePetaDesa']);
 
     Route::post('/store-fasilitas', [ProfilDesaController::class, 'storeFasilitas']);
     Route::put('/edit-fasilitas/{id}', [ProfilDesaController::class, 'updateFasilitas']);
@@ -90,5 +92,19 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-perangkat-desa/{id}', [PemerintahanController::class, 'editPerangkatDesa']);
     Route::delete('/delete-perangkat-desa/{id}', [PemerintahanController::class, 'deletePerangkatDesa']);
 
+    Route::post('/store-foto', [PublikasiController::class, 'storeFoto']);
+    Route::put('/edit-foto/{id}', [PublikasiController::class, 'editFoto']);
+    Route::delete('/delete-foto/{id}', [PublikasiController::class, 'deleteFoto']);
 
+    Route::post('/store-video', [PublikasiController::class, 'storeVideo']);
+    Route::put('/edit-video/{id}', [PublikasiController::class, 'editVideo']);
+    Route::delete('/delete-video/{id}', [PublikasiController::class, 'deleteVideo']);
+
+    Route::post('/store-berita', [PublikasiController::class, 'storeBerita']);
+    Route::put('/edit-berita/{id}', [PublikasiController::class, 'editBerita']);
+    Route::delete('/delete-berita/{id}', [PublikasiController::class, 'deleteBerita']);
+
+    Route::post('/store-pengumuman', [PublikasiController::class, 'storePengumuman']);
+    Route::put('/edit-pengumuman/{id}', [PublikasiController::class, 'editPengumuman']);
+    Route::delete('/delete-pengumuman/{id}', [PublikasiController::class, 'deletePengumuman']);
 });

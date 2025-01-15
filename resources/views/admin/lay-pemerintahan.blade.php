@@ -11,8 +11,21 @@
         </div>
     @endif
 
+    <div class="container py-3 px-4 rounded text-white" style="background-color: #D3F1DF;">
+        <nav style="--bs-breadcrumb-divider: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%278%27 height=%278%27%3E%3Cpath d=%27M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z%27 fill=%27%23000000%27/%3E%3C/svg%3E');" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="#" class="text-decoration-none text-dark">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">
+                    Pemerintahan Layouts
+                </li>
+            </ol>
+        </nav>
+    </div>
+
     <!-- Section Navbar -->
-    <div class="card">
+    <div class="card mt-4">
         <div class="card-body">
             <h5>Struktur Organisasi</h5>
 
@@ -180,6 +193,23 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                            <div class="text-center mb-2">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-5">
+                                        @if ($item->foto_perangkat)
+                                            <img src="{{ asset('storage/' . $item->foto_perangkat) }}" alt="{{ $item->nama_perangkat }}" class="img-fluid rounded w-100">
+                                        @else
+                                            <div class="no-image-container text-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="gray" class="bi bi-image" viewBox="0 0 16 16">
+                                                    <path d="M14.002 4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8.002a1 1 0 0 0 1 1h11.002a1 1 0 0 0 1-1V4zm-1-.002V11l-2.5-2.5-3.5 3.5-3.5-3.5L2 11.002V4h11.002zM2 3a2 2 0 0 0-2 2v8.002a2 2 0 0 0 2 2h11.002a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H2z"/>
+                                                    <path d="M10.648 7.646a.5.5 0 0 0-.646-.047l-2.772 2.3-1.528-1.85a.5.5 0 0 0-.8.6l1.89 2.287a.5.5 0 0 0 .785.062l2.89-2.4a.5.5 0 0 0-.047-.752z"/>
+                                                </svg>
+                                                <p class="text-muted mt-2">No Image Available</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                             <div class="mb-2">
                                 <label for="foto_perangkat" class="form-label">File Foto</label>

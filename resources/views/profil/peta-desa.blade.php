@@ -27,13 +27,7 @@
       <div class="card-body ">
         <h2 class="card-title">Peta Desa</h2>
         <div class="map-container">
-          <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15839.329388277785!2d113.56453474478158!3d-7.028983437564136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9da78e909d85b%3A0x91423c8c2fa9491e!2sPalalang%2C%20Pakong%2C%20Pamekasan%20Regency%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1735818161467!5m2!1sen!2sid" 
-              allowfullscreen="" 
-              loading="lazy"    
-              referrerpolicy="no-referrer-when-downgrade"
-              style="width: 100%; height: 60vh; border: 0;">
-          </iframe>
+          {!! $profile->peta_desa_url !!}
         </div>   
       </div>
     </div>

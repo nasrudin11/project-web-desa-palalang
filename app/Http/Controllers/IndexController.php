@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Homepage;
+use App\Models\PerangkatDesa;
+use App\Models\ProfilDesa;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -20,37 +23,46 @@ class IndexController extends Controller
     public function indexVisiMisi()
     {
         $data = Homepage::first();
-        return view('profil.visi-misi', ['title' => 'Visi Misi'], compact('data'));
+        $profile = ProfilDesa::first();
+        return view('profil.visi-misi', ['title' => 'Visi Misi'], compact('data', 'profile'));
     }
 
     public function indexPetaDesa()
     {
         $data = Homepage::first();
-        return view('profil.peta-desa', ['title' => 'Peta Desa'], compact('data'));
+        $profile = ProfilDesa::first();
+
+        return view('profil.peta-desa', ['title' => 'Peta Desa'], compact('data', 'profile'));
     }
 
     public function indexSejarah()
     {
         $data = Homepage::first();
-        return view('profil.sejarah', ['title' => 'Sejarah'], compact('data'));
+        $profile = ProfilDesa::first();
+
+        return view('profil.sejarah', ['title' => 'Sejarah'], compact('data', 'profile'));
     }
 
     public function indexFasilitas()
     {
         $data = Homepage::first();
-        return view('profil.fasilitas-desa', ['title' => 'Fasilitas'], compact('data'));
+        $profile = ProfilDesa::first();
+        
+        return view('profil.fasilitas-desa', ['title' => 'Fasilitas'], compact('data', 'profile'));
     }
 
     public function indexStruktur()
     {
         $data = Homepage::first();
-        return view('pemerintahan.struktur', ['title' => 'Struktur'], compact('data'));
+        $struktur = StrukturOrganisasi::first();
+        return view('pemerintahan.struktur', ['title' => 'Struktur'], compact('data', 'struktur'));
     }
 
     public function indexPerangkat()
     {
         $data = Homepage::first();
-        return view('pemerintahan.perangkat', ['title' => 'Perangkat'], compact('data'));
+        $perangkat = PerangkatDesa::all();
+        return view('pemerintahan.perangkat', ['title' => 'Perangkat'], compact('data', 'perangkat'));
     }
 
     public function indexFoto()
