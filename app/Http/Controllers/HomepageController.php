@@ -43,7 +43,7 @@ class HomepageController extends Controller
         $data = Homepage::first(); // Ambil data pertama
         
         // Validasi input
-        $validated = $request->validate([
+        $request->validate([
             'banner_1' => 'nullable|image|mimes:jpeg,png,jpg',
             'banner_2' => 'nullable|image|mimes:jpeg,png,jpg',
             'banner_3' => 'nullable|image|mimes:jpeg,png,jpg',

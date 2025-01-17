@@ -12,8 +12,11 @@
         <li class="breadcrumb-item">
           <a href="/" class="text-decoration-none text-dark">Home</a>
         </li>
+        <li class="breadcrumb-item" aria-current="page">
+          <a href="/foto" class="text-decoration-none text-dark">Home</a>
+        </li>
         <li class="breadcrumb-item active fw-bold" aria-current="page">
-          Foto
+          {{ $foto->judul_foto }}
         </li>
       </ol>
     </nav>
@@ -22,19 +25,29 @@
 
 <!-- Konten Foto -->
 
-<div class="container my-3">
-    <h2>Foto</h2>
+<div class="container mb-4">
+  <h3 class="mb-3">Foto</h3>
 
-    <div class="card border-0 py-3 px-2 shadow mb-3">
-        <img src="../img/banner1.jpg" class="card-img-top" alt="Berita 1">
-        <div class="card-body ">
-            <h2 class="card-title">Berita 1</h2>
-            <p>08 - 09 - 2025</p>
-            <p>Content Galeri</p>
-            <h4 class="text-secondary">Foto Lainya</h4>
-        </div>
-    </div>
+  <div class="card border-0 py-3 px-2 shadow mb-3">
+    <!-- Gambar dengan lebar 70% -->
+    <img src="{{ $foto->foto ? asset('storage/'.$foto->foto) : asset('img/no-image.png') }}" 
+         class="card-img-top img-fluid mx-auto d-block" 
+         style="width: 70%;" alt="{{ $foto->judul_foto }}">
          
+    <div class="card-body">
+        <!-- Judul Foto -->
+        <h2 class="card-title">{{ $foto->judul_foto }}</h2>
+
+        <!-- Menambahkan ikon kalender sebelum tanggal -->
+        <p class="text-secondary small">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 
+            {{ $foto->created_at->format('d-m-Y') }}
+        </p>
+
+        <!-- Konten Foto -->
+        <p>{{ $foto->deskripsi ?? 'Konten tidak tersedia.' }}</p>
+    </div>
+</div>
 
 </div>
 

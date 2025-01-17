@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+ 
 
     <title>{{ $title }}</title>
 

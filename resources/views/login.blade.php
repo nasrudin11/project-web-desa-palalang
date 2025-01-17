@@ -2,15 +2,19 @@
 
 @section('content')
 
-    <section class="login d-flex">
-        <div class="login-left w-50 h-100">
-            <div class="row justify-content-center align-items-center h-100">
-                <div class="col-6">
+    <section class="login d-flex flex-column flex-md-row">
+        <div class="login-left col-12 col-md-6 h-100 d-flex justify-content-center align-items-center">
+            <img src="img/login.png" class="img-fluid" alt="Login">
+        </div>
+    
+        <div class="login-right col-12 col-md-6 h-100 d-flex justify-content-center align-items-center">
+            <div class="row justify-content-center w-100 h-100 align-items-center">
+                <div class="col-12 col-md-8 col-lg-6">
                     <div class="header">
                         <h1>Welcome Back</h1>
                         <p>Welcome back! Please enter your details</p>
                     </div>
-                
+
                     @if(session()->has('loginError'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{ session('loginError') }}
@@ -38,21 +42,8 @@
                                 </div>
                             @enderror
 
-                            <button type="submit" class="login mt-3">Login</button> 
+                            <button type="submit" class="login mt-3 w-100">Login</button> 
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="login-right w-50 h-100">   
-            <div id="carouselLoginFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/login/2.svg" class="d-block w-100" style="height: 100vh;" alt="Slide 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/login/3.svg" class="d-block w-100" style="height: 100vh;" alt="Slide 2">
                     </div>
                 </div>
             </div>
@@ -60,4 +51,3 @@
     </section>
 
 @endsection
-

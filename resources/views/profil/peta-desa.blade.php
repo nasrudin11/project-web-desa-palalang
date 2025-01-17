@@ -22,10 +22,10 @@
 
   <!-- Konten Berita -->
 
-  <div class="container my-4">
+  <div class="container mb-4">
     <div class="card border-0 py-3 px-3 shadow">
       <div class="card-body ">
-        <h2 class="card-title">Peta Desa</h2>
+        <h3 class="card-title mb-3">Peta Desa</h3>
         <div class="map-container">
           {!! $profile->peta_desa_url !!}
         </div>   

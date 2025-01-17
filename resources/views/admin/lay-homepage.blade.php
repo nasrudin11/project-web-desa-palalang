@@ -31,6 +31,7 @@
             <h5>Navbar</h5>
             <form action="/edit-navbar" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="d-flex align-items-center mb-3">
                     <label for="logo" class="form-label mb-0" style="min-width: 100px;">Logo</label>
                     <div class="w-100">
@@ -91,8 +92,9 @@
             </div>
             
             
-            <form action="/edit-banner" method="post" c>
+            <form action="/edit-banner" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="d-flex align-items-center  mb-3">
                     <label for="banner_1" class="form-label mb-0" style="min-width: 100px;">Banner 1</label>
                     <div class="w-100">
@@ -140,6 +142,7 @@
             <h5>Konten</h5>
             <form action="/edit-konten" method="post">
                 @csrf
+                @method('PUT')
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_video" class="form-label mb-0" style="min-width: 100px;">Link Video</label>
                     <div class="w-100">
@@ -174,6 +177,7 @@
             <h5>Footer</h5>
             <form action="/edit-footer" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="tentang_desa" class="form-label mb-2" style="min-width: 100px;">Tentang Desa</label>
                     <textarea name="tentang_desa" id="editorTentang" class="form-control @error('tentang_desa') is-invalid @enderror" placeholder="Masukkan deskripsi tentang desa">{{ $data->tentang_desa }}</textarea>

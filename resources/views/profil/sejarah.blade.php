@@ -20,42 +20,23 @@
   </div>
 </div>
 
-  <!-- Konten Berita -->
+  <!-- Konten Sejarah -->
 
   <div class="container mb-4">
 
     <div class="card border-0 py-3 px-3 shadow">
       <div class="card-body ">
-        <h2 class="card-title mb-3">Sejarah</h2>
+        <h3 class="card-title mb-3">Sejarah</h3>
 
         <div class="row">
           <div class="col-md-3">
-              <img src="../img/banner1.jpg" alt="" class="img-fluid">
+              <img src="{{ asset('storage/' . $profile->foto_desa) }}" alt="Desa" class="img-fluid" >
           </div>
 
           <div class="col">
-            <p class="card-text">
-                Desa palangan terdiri dari 2 (dua) dusun yaitu dusun Palangan dan Dusun Kebonsari.Yang keduanya mempunyai sejarah masing-masing, sehingga awal terjadinya kedua dusun itu berasal dari beberapa cerita ataupun legenda yang turun temurun.
-            </p>
-            <p class="card-text">
-                Asal muasal/legenda Dusun Palangan ada beberapa versi.Yang pertama adalah Dahulu kala ada saudagar yang membawa barang dagangan yang berupa gerabah dan keramik yang berasal dari barat dengan menaiki Perahu, yang melintasi sepanjang bengawan solo.Ketika sampai di sebelah barat dusun, perahu tersebut karam sampai berhari-hari dan posisinya molang-malang, sehingga orang-orang ketika itu menamai perkampungan itu palangan, karena molang-malangnya perahu yang karam tersebut.
-            </p>
-            <p class="card-text">
-                Yang kedua adalah ketika ada seorang durjana yang berasal dari barat mencuri barang, dia di kejar-kejar hingga sampai ke pemukiman.Tetapi dia tidak bisa masuk dan tersangkut di palang yang terbuat dari kayu, yang digunakan sebagai pintu gerbang.Dan orang tersebut tidak bisa masuk ataupun keluar dan terpalang di tempat itu.
-            </p>
-            <p class="card-text">
-                Sedangkan terjadinya Dusun kebonsari berasal dari : dahulu di sebelah barat pemukiman ada gubuk yang berdiri di tengah perkebunan, ada penjahat yang lari di kejar-kejar dan masuk ke dalam gubuk itu, dan tidak ada seorangpun yang menemukan. Sehingga penjahat tersebut sampai beranak pinak dan mendiami perkebunan. Dan akhirnya pemukiman itu dinamai Kebonsari.
-            </p>
-            <p class="card-text">
-                  Dan untuk penentuan ibukota Desa adalah Dusun Palangan, karena dulu palangan pernah mengalami kejayaan, ketika jaman belanda adalah pusat pemerintahan, yang kala bertempat di wilayah nggeneng/cundrik, karena ditemukan tanda-tanda pusat pemerintahan yang berupa puing-puing bangunan-bangunan yang tertata dengan rapi dan juga ditemukan gerabah.Tetapi sekarang tempat itu sudah menjadi area tambak.
-            </p>
+            {!! $profile->sejarah_desa !!}
           </div>
         </div>
-       
-         
-          
-         
-          
           
       </div>
     </div>

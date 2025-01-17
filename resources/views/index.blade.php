@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Homepage Banner as Carousel -->
-    <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div id="homepageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <!-- Indicators -->
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#homepageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -14,60 +14,73 @@
         <div class="carousel-inner" style="height: 100vh;">
             <!-- Slide 1 -->
             <div class="carousel-item active">
-                <div class="d-flex align-items-center justify-content-center" 
+                <div class="d-flex align-items-center justify-content-center position-relative" 
                     style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_1) }}') no-repeat center center; background-size: cover;">
-                    <h1 class="text-white">Welcome to Our Website</h1>
-                </div>
-            </div>                              
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="d-flex align-items-center justify-content-center" 
-                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_2) }}') no-repeat center center; background-size: cover;">
-                    <h1 class="text-white">Explore Our Features</h1>
+                    <!-- Overlay -->
+                    <div class="position-absolute top-0 start-0 w-100 h-100" 
+                        style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                    <!-- Content -->
+                    <h1 class="text-white position-relative" style="z-index: 2;">Welcome to Our Website</h1>
                 </div>
             </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="d-flex align-items-center justify-content-center position-relative" 
+                    style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_2) }}') no-repeat center center; background-size: cover;">
+                    <!-- Overlay -->
+                    <div class="position-absolute top-0 start-0 w-100 h-100" 
+                        style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                    <!-- Content -->
+                    <h1 class="text-white position-relative" style="z-index: 2;">Explore Our Features</h1>
+                </div>
+            </div>
+
             <!-- Slide 3 -->
             <div class="carousel-item">
-                <div class="d-flex align-items-center justify-content-center" 
+                <div class="d-flex align-items-center justify-content-center position-relative" 
                     style="height: 100vh; background: url('{{ asset('storage/' . $data->banner_3) }}') no-repeat center center; background-size: cover;">
-                    <h1 class="text-white">Join Us Today</h1>
+                    <!-- Overlay -->
+                    <div class="position-absolute top-0 start-0 w-100 h-100" 
+                        style="background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+                    <!-- Content -->
+                    <h1 class="text-white position-relative" style="z-index: 2;">Join Us Today</h1>
                 </div>
             </div>
         </div>
-
     </div>
 
-
-    <!-- Container untuk SOP Desa -->
+    <!-- Container untuk Pelayanan Desa -->
     <div class="container mt-4 py-3 px-4">
-        <h3 class="text-center mb-4">SOP Desa</h3>
+        <h3 class="text-center mb-4">Pelayanan Desa</h3>
         <div class="row text-center">
             <!-- Pelayanan Administrasi -->
             <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000">
                 <div class="p-3">
                     <i class="fa-solid fa-file-lines" style="font-size: 3rem; color: #50B498;"></i>
-                    <h5 class="mt-3">Kasi Kesejahteraan</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, deserunt molestias corporis corrupti explicabo vero!</p>
+                    <h5 class="mt-3">Administrasi</h5>
+                    <p>Layanan untuk pembuatan dokumen penting seperti KTP, KK, Akta Kelahiran, dan lainnya.</p>
                 </div>
             </div>
             <!-- Pelayanan Pembangunan -->
             <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                 <div class="p-3">
                     <i class="fa-solid fa-building" style="font-size: 3rem; color: #50B498;"></i>
-                    <h5 class="mt-3">Kasi Pelayanan</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum dolorum, quaerat similique ratione nesciunt possimus?</p>
+                    <h5 class="mt-3">Pembangunan</h5>
+                    <p>Usulan dan informasi mengenai proyek pembangunan di desa, serta permohonan izin pembangunan.</p>
                 </div>
             </div>
             <!-- Pelayanan Kesehatan -->
             <div class="col-md-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                 <div class="p-3">
                     <i class="fa-solid fa-heartbeat" style="font-size: 3rem; color: #50B498;"></i>
-                    <h5 class="mt-3">Kasi Pemerintahan</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae delectus iste id voluptate. Veniam?</p>
+                    <h5 class="mt-3">Kesehatan</h5>
+                    <p>Pendaftaran layanan kesehatan desa, informasi imunisasi, pemeriksaan kesehatan, dan penyuluhan kesehatan.</p>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Profil Desa -->
     <div class="container py-3 px-4">
@@ -92,87 +105,74 @@
     <div class="container py-3 px-4">
         <h3 class="text-center mb-4">Berita</h3>
         <div class="row g-4">
-            <!-- Baris Pertama -->
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
+            @forelse ($berita as $item)
+                <!-- Baris Berita -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-duration="1000">
+                    <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
+                        <div class="card shadow border-0">
+                            <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : 'https://via.placeholder.com/300x200?text=No+Image' }}" class="card-img-top" alt="Berita">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->judul_publikasi }}</h5>
+                                <p class="card-text">{!! Str::limit($item->deskripsi_publikasi, 100) !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <!-- Jika tidak ada data -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-duration="1000">
                     <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 1">
+                        <img src="https://via.placeholder.com/300x200?text=No+Data" class="card-img-top" alt="No Data">
                         <div class="card-body">
-                            <h5 class="card-title">Berita Desa 1</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 1 yang menarik perhatian pembaca.</p>
+                            <h5 class="card-title">Tidak ada Berita</h5>
+                            <p class="card-text">Saat ini tidak ada berita yang tersedia. Mohon cek kembali nanti.</p>
                         </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
-                    <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Berita Desa 2</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 2 yang menarik perhatian pembaca.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
-                    <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Berita Desa 3</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 3 yang menarik perhatian pembaca.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
+                </div>
+            @endforelse
         </div>
+
         <!-- Tombol Lihat Lainnya -->
         <div class="text-center mt-4">
-            <a href="#" class="btn btn-success">Lihat Lainnya</a>
+            <a href="/berita" class="btn btn-sm text-white" style="background-color: #50B498">Lihat Lainnya</a>
         </div>
     </div>
 
+
     <!-- Container Pengumuman -->
-    <div class="container mb-4 py-3 px-4">
+    <div class="container py-3 px-4">
         <h3 class="text-center mb-4">Pengumuman</h3>
         <div class="row g-4">
-            <!-- Baris Pertama -->
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
+            @forelse ($pengumuman as $item)
+                <!-- Baris Berita -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-duration="1000">
+                    <a href="/pengumuman-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
+                        <div class="card shadow border-0">
+                            <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : 'https://via.placeholder.com/300x200?text=No+Image' }}" class="card-img-top" alt="Pengumuman">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->judul_publikasi }}</h5>
+                                <p class="card-text">{!! Str::limit($item->deskripsi_publikasi, 100) !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <!-- Jika tidak ada data -->
+                <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
                     <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 1">
+                        <img src="https://via.placeholder.com/300x200?text=No+Data" class="card-img-top" alt="No Data">
                         <div class="card-body">
-                            <h5 class="card-title">Berita Desa 1</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 1 yang menarik perhatian pembaca.</p>
+                            <h5 class="card-title">Tidak ada Berita</h5>
+                            <p class="card-text">Saat ini tidak ada berita yang tersedia. Mohon cek kembali nanti.</p>
                         </div>
                     </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
-                    <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Berita Desa 2</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 2 yang menarik perhatian pembaca.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-duration="1000">
-                <a href="#" class="text-decoration-none text-dark">
-                    <div class="card shadow border-0">
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Berita 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Berita Desa 3</h5>
-                            <p class="card-text">Deskripsi singkat berita desa 3 yang menarik perhatian pembaca.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                </div>
+            @endforelse
+        </div>
 
+        <!-- Tombol Lihat Lainnya -->
+        <div class="text-center mt-4">
+            <a href="/pengumuman" class="btn btn-sm text-white" style="background-color: #50B498">Lihat Lainnya</a>
         </div>
     </div>
 

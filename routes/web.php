@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PemerintahanController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\PublikasiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -40,15 +41,17 @@ Route::middleware('guest')->group(function () {
     Route::get('/perangkat-desa', [IndexController::class, 'indexPerangkat']);
 
     Route::get('/foto', [IndexController::class, 'indexFoto']);
-    Route::get('/foto-dtl', [IndexController::class, 'indexFotoD']);
+    Route::get('/foto-dtl/{id}', [IndexController::class, 'indexFotoD']);
     Route::get('/video', [IndexController::class, 'indexVideo']);
-    Route::get('/video-dtl', [IndexController::class, 'indexVideoD']);
-    Route::get('/berita', [IndexController::class, 'indexBerita']);
-    Route::get('/berita-dtl', [IndexController::class, 'indexBeritaD']);
+    Route::get('/video-dtl/{id}', [IndexController::class, 'indexVideoD']);
+
     Route::get('/pengumuman', [IndexController::class, 'indexPengumuman']);
-    Route::get('/pengumuman-dtl', [IndexController::class, 'indexPengumumanD']);
+    Route::get('/pengumuman-dtl/{id}', [IndexController::class, 'indexPengumumanD']);
     Route::get('/pengaduan', [IndexController::class, 'indexPengaduan']);
 });
+
+Route::get('/berita', [IndexController::class, 'indexBerita']);
+Route::get('/berita-dtl/{id}', [IndexController::class, 'indexBeritaD']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -72,10 +75,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-pengaduan', [DashboardController::class, 'dashboardPengaduan']);
     Route::get('/dashboard-pengaduan-dtl', [DashboardController::class, 'dashboardPengaduanDtl']);
 
+    
+    Route::put('/edit-profile', [UserController::class, 'updateProfile']);
+    Route::put('/update-password', [UserController::class, 'updatePassword']);
 
-    Route::post('/edit-navbar', [HomepageController::class, 'editNavbar']);
-    Route::post('/edit-banner', [HomepageController::class, 'editBanner']);
-    Route::post('/edit-konten', [HomepageController::class, 'editKonten']);
+    Route::put('/edit-navbar', [HomepageController::class, 'editNavbar']);
+    Route::put('/edit-banner', [HomepageController::class, 'editBanner']);
+    Route::put('/edit-konten', [HomepageController::class, 'editKonten']);
     Route::post('/edit-footer', [HomepageController::class, 'editFooter']);
 
     Route::put('/update-visi-misi', [ProfilDesaController::class, 'updateVisiMisi']);

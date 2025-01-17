@@ -14,9 +14,9 @@
         </li>
         <li class="breadcrumb-item">
             <a href="/berita" class="text-decoration-none text-dark">Berita</a>
-          </li>
+        </li>
         <li class="breadcrumb-item active fw-bold" aria-current="page">
-          Judul Berita
+          {{ $berita->judul_publikasi }}
         </li>
       </ol>
     </nav>
@@ -24,68 +24,63 @@
 </div>
 
 <!-- Konten berita -->
+<div class="container mb-4">
+  <div class="row">
 
-<div class="container my-3">
-    <h2>Berita</h2>
-    <div class="row">
-
-        <!-- Card kedua dengan kolom besar -->
-        <div class="col">
-            <div class="card border-0 px-3 shadow-sm">
-                <div class="card-body">
-                        <h3 class="fw-normal">Berita 1</h3>
-                    <!-- Tanggal dengan ukuran kecil -->
-                    <span class="text-secondary small fw-normal">Dec, 29, 2025</span>
-                    <img src="../img/banner1.jpg" alt="" class="img-fluid">
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt aspernatur aliquam voluptatibus voluptatem aliquid iusto? Odio omnis iure natus?</p>
-                </div>
+    <!-- Kolom untuk menampilkan detail berita -->
+    <div class="col-md-8">
+      @if ($berita)
+        <!-- Tampilkan berita jika ada -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <img src="{{ $berita->foto_publikasi ? asset('storage/'.$berita->foto_publikasi) : asset('img/no-image.png') }}" class="img-fluid w-100 mb-4" alt="Gambar Berita">
+            <h3>{{ $berita->judul_publikasi }}</h3>
+            <div>
+              <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
+              <span class="text-secondary small">{{ $berita->created_at->format('d-m-Y') }}</span>
             </div>
+            <p>{!! $berita->deskripsi_publikasi ?? 'Deskripsi tidak tersedia.' !!}</p>
+          </div>
         </div>
-        
-
-        <!-- Card ketiga dengan kolom kecil -->
-        <div class="col-4">
-                <div class="card border-0 pt-2 px-2 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="fw-bolder">Berita Terakhir</h5>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="../img/banner1.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="col">
-                                <a href="/berita-dtl" class="text-decoration-none text-dark">
-                                    <h5 class="text-secondary">Berita 1</h5>
-                                </a>                   
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="../img/banner1.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="col">
-                                <a href="/berita-dtl" class="text-decoration-none text-dark">
-                                    <h5 class="text-secondary">Berita 1</h5>
-                                </a>                   
-                            </div>
-                        </div>
-
-                        <hr>
-
-
-                    </div>
-                </div>
+      @else
+        <!-- Tampilkan gambar jika data kosong -->
+        <div class="row justify-content-center">
+          <div class="col-md-6 p-0">
+            <img src="{{ asset('img/no-data.png') }}" alt="No Data Available" class="img-fluid w-100" >
+          </div>
         </div>
-
+      @endif
     </div>
+
+    <!-- Kolom untuk menampilkan berita terbaru -->
+    <div class="col-md-4">
+      <!-- Card untuk berita terbaru -->
+      <div class="card border-0 pt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h5 class="fw-bolder">Berita Terbaru</h5>
+
+          @foreach ($beritaTerbaru as $item)
+            <div class="row mb-3">
+              <div class="col-4">
+                <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : asset('img/no-image.png') }}" alt="Gambar Berita Terbaru" class="img-fluid">
+              </div>
+
+              <div class="col">
+                <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
+                  <h5 class="text-secondary">{{ $item->judul_publikasi }}</h5>
+                </a>
+                <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
+                <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
+              </div>
+            </div>
+            <hr>
+          @endforeach
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-
-    
 @endsection

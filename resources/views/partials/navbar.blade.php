@@ -75,7 +75,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white me-2" href="/pengaduan">Pengaduan</a>
+                            <a class="nav-link text-white me-2" href="/pengaduan">Pengajuan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white me-2" href="/login">Login</a>

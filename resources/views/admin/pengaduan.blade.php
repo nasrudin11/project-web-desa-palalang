@@ -33,22 +33,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onclick="window.location='/dashboard-pengaduan-dtl';" style="cursor: pointer;">
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>Palalang</td>
-                                <td>Berat</td>
-                                <td>08819283471</td>
-                                <td>2025-01-15</td>
-                                <td>
-                                    <span class="short-desc">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium non, ullam tempore nihil...
-                                    </span>
-                                </td>
-                            </tr>
+                            @foreach ($pengaduan as $index => $item)
+                                <tr>
+                                    <!-- Bungkus setiap baris dengan tautan -->
+                                    <a href="/dashboard-pengaduan-dtl/{{ $aduan->id }}" class="text-decoration-none text-dark">
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->dusun }}</td>
+                                        <td>{{ $item->jenis_aduan }}</td>
+                                        <td>{{ $item->no_hp }}</td>
+                                        <td>{{ $item->tanggal }}</td>
+                                        <td>{!! Str::limit($aduan->deskripsi, 15, '...') !!}</td>
+                                    </a>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -58,16 +60,5 @@
 @section('table')
     <script>
        let table = new DataTable('#myTable');
-    </script>
-
-    <script>
-        // Membatasi deskripsi hingga 15 kata
-        document.querySelectorAll('.short-desc').forEach(function (element) {
-            const fullText = element.innerText;
-            const words = fullText.split(' ');
-            if (words.length > 10) {
-                element.innerText = words.slice(0, 10).join(' ') + '...';
-            }
-        });
     </script>
 @endsection

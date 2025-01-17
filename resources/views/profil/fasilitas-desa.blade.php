@@ -22,44 +22,33 @@
 
   <!-- Konten Fasilitas Desa -->
 
-  <div class="container my-3">
-    <h2>Fasiilitas Desa</h2>
-    <div class="row">
-      <div class="col">
-        <div class="card border-0 py-3 px-3 shadow">
-          <div class="card-body ">
-            
-          </div>
-        </div>
-      </div>
+<div class="container text-center mb-4">
+  <h3 class="text-start mb-3">Fasilitas Desa</h3>
+  @if ($fasilitas->isEmpty())
+      <!-- Tampilkan gambar jika data kosong -->
 
-      <div class="col">
-        <div class="card border-0 py-3 px-3 shadow">
-          <div class="card-body ">
-            
-          </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-0">
+            <img src="{{ asset('img/no-data.png') }}" alt="No Data Available" class="img-fluid w-100" >
         </div>
-      </div>
-
-      <div class="col">
-        <div class="card border-0 py-3 px-3 shadow">
-          <div class="card-body ">
-            
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card border-0 py-3 px-3 shadow">
-          <div class="card-body ">
-            
-          </div>
-        </div>
-      </div>
     </div>
 
-    
-  </div>
+  @else
+      <!-- Tampilkan fasilitas jika data ada -->
+      <div class="row g-4">
+          @foreach ($fasilitas as $item)
+              <div class="col-md-3" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="card border-0 shadow">
+                      <img src="{{ asset('storage/'.$item->foto_fasilitas) }}" class="card-img-top" alt="{{ $item->nama_fasilitas }}" style="height: 200px; object-fit: cover;">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">{{ $item->nama_fasilitas }}</h5>
+                          <p class="card-text">{{ Str::limit($item->deskripsi_fasilitas, 80) }}</p>
+                      </div>
+                  </div>
+              </div>
+          @endforeach
+      </div>
+  @endif
+</div>
 
-    
 @endsection

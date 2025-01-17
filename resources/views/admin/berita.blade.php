@@ -95,14 +95,14 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>
                                     @if ($item->foto_publikasi)
-                                        <img src="{{ asset('storage/' . $item->foto_publikasi) }}" alt="Foto Perangkat" width="100">
+                                        <img src="{{ asset('storage/' . $item->foto_publikasi) }}" alt="Berita" width="100">
                                     @else
                                         Tidak ada foto
                                     @endif
                                 </td>
                                 <td>{{ $item->judul_publikasi }}</td>
                                 <td>{!! $item->deskripsi_publikasi !!}</td>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_at->format('d M Y') }}</td>
                                 <td>
                                     <!-- Tombol Edit -->
                                     <button class="btn btn-warning btn-sm shadow" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_publikasi }}">

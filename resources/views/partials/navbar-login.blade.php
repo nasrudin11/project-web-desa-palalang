@@ -20,7 +20,9 @@ id="layout-navbar">
         href="javascript:void(0);"
         data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-          <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+          <img src="{{ auth()->user()->gambar_profil ? asset('storage/' . auth()->user()->gambar_profil) : asset('img/default.png') }}"
+           alt="Foto Profile" 
+           class="w-px-40 h-auto rounded-circle border border-primary border-1" />
         </div>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -29,14 +31,18 @@ id="layout-navbar">
             <div class="d-flex">
               <div class="flex-shrink-0 me-3">
                 <div class="avatar avatar-online">
-                  <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                  <img 
+                    src="{{ auth()->user()->gambar_profil ? asset('storage/' . auth()->user()->gambar_profil) : asset('img/default.png') }}" 
+                    alt="Foto Profil" 
+                    class="w-px-40 h-auto rounded-circle border border-primary border-1" 
+                  />
                 </div>
               </div>
               <div class="flex-grow-1">
-                <h6 class="mb-0">Operator Desa</h6>
-                <small class="text-muted">Admin</small>
+                <h6 class="mb-0">{{ auth()->user()->name }}</h6>
+                <small class="text-muted">Administrator</small>
               </div>
-            </div>
+            </div>            
           </a>
         </li>
         <li>
@@ -55,9 +61,6 @@ id="layout-navbar">
               @csrf
               <button type="submit" class="dropdown-item"><i class="bx bx-power-off bx-md me-3"></i>Logout</button>
           </form>
-          {{-- <a class="dropdown-item" href="/logout">
-            <i class="bx bx-power-off bx-md me-3"></i><span>Log Out</span>
-          </a> --}}
         </li>
       </ul>
     </li>

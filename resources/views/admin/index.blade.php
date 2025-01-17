@@ -32,24 +32,24 @@
             </div>
         </div>
 
-        <!-- Row untuk 5 Cards -->
+        <!-- Row untuk Foto, Video, Berita, Pengumuman -->
         <div class="row">
-            <!-- Pengunjung Hari Ini -->
+            <!-- Foto -->
             <div class="col mb-4">
                 <div class="card h-100 text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Pengunjung</h5>
-                        <h2 class="text-primary mb-0">0</h2>
+                        <h5 class="card-title">Foto</h5>
+                        <h2 class="text-primary mb-0">{{ $fotoCount }}</h2> <!-- Menampilkan jumlah foto -->
                     </div>
                 </div>
             </div>
 
-            <!-- Pengunjung Total -->
+            <!-- Video -->
             <div class="col mb-4">
                 <div class="card h-100 text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Pengunjung Total</h5>
-                        <h2 class="text-success mb-0">0</h2>
+                        <h5 class="card-title">Video</h5>
+                        <h2 class="text-success mb-0">{{ $videoCount }}</h2> <!-- Menampilkan jumlah video -->
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Berita</h5>
-                        <h2 class="text-info mb-0">0</h2>
+                        <h2 class="text-info mb-0">{{ $beritaCount }}</h2> <!-- Menampilkan jumlah berita -->
                     </div>
                 </div>
             </div>
@@ -69,49 +69,13 @@
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <h5 class="card-title">Pengumuman</h5>
-                        <h2 class="text-warning mb-0">0</h2>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Total Pengaduan -->
-            <div class="col mb-4">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Pengaduan</h5>
-                        <h2 class="text-danger mb-0">0</h2>
+                        <h2 class="text-warning mb-0">{{ $pengumumanCount }}</h2> <!-- Menampilkan jumlah pengumuman -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Fungsi untuk mendapatkan nama hari
-        function getDayName(dayIndex) {
-            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-            return days[dayIndex];
-        }
-    
-        // Fungsi untuk mendapatkan nama bulan
-        function getMonthName(monthIndex) {
-            const months = [
-                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-            ];
-            return months[monthIndex];
-        }
-    
-        // Mendapatkan tanggal saat ini
-        const currentDate = new Date();
-        const dayName = getDayName(currentDate.getDay());
-        const day = currentDate.getDate();
-        const monthName = getMonthName(currentDate.getMonth());
-        const year = currentDate.getFullYear();
-    
-        // Menampilkan hari dan tanggal di elemen HTML
-        document.getElementById('day-name').textContent = dayName;
-        document.getElementById('full-date').textContent = `${day}/${monthName}/${year}`;
-    </script>
+
+    </div>
 
 @endsection

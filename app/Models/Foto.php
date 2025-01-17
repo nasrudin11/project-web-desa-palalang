@@ -17,5 +17,6 @@ class Foto extends Model
         'foto'
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
+    const UPDATED_AT = null;
 }

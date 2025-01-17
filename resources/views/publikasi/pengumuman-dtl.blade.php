@@ -10,82 +10,77 @@
     >
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-          <a href="/pengumuman-dtl/" class="text-decoration-none text-dark">Home</a>
+          <a href="/" class="text-decoration-none text-dark">Home</a>
         </li>
         <li class="breadcrumb-item">
-            <a href="/pengumuman-dtl/" class="text-decoration-none text-dark">Pengumuman</a>
-          </li>
+            <a href="/pengumuman" class="text-decoration-none text-dark">Pengumuman</a>
+        </li>
         <li class="breadcrumb-item active fw-bold" aria-current="page">
-          Judul Pengumuman
+          {{ $pengumuman->judul_publikasi }}
         </li>
       </ol>
     </nav>
   </div>
 </div>
 
-<!-- Konten Pengumuman -->
-
+<!-- Konten pengumuman -->
 <div class="container mb-4">
-    <h2 class="mb-4">Pengumuman</h2>
-    <div class="row">
+  <div class="row">
 
-        <!-- Card kedua dengan kolom besar -->
-        <div class="col">
-            <div class="card border-0 px-3 shadow-sm">
-                <div class="card-body">
-                        <h3 class="fw-normal">Pengumuman 1</h3>
-                    <!-- Tanggal dengan ukuran kecil -->
-                    <span class="text-secondary small fw-normal">Dec, 29, 2025</span>
-                    <img src="../img/banner1.jpg" alt="" class="img-fluid">
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt aspernatur aliquam voluptatibus voluptatem aliquid iusto? Odio omnis iure natus?</p>
-                </div>
+    <!-- Kolom untuk menampilkan detail pengumuman -->
+    <div class="col-md-8">
+      @if ($pengumuman)
+        <!-- Tampilkan pengumuman jika ada -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <img src="{{ $pengumuman->foto_publikasi ? asset('storage/'.$pengumuman->foto_publikasi) : asset('img/no-image.png') }}" class="img-fluid w-100 mb-4" alt="Gambar pengumuman">
+            <h3>{{ $pengumuman->judul_publikasi }}</h3>
+            <div>
+              <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
+              <span class="text-secondary small">{{ $pengumuman->created_at->format('d-m-Y') }}</span>
             </div>
+            <p>{!! $pengumuman->deskripsi_publikasi ?? 'Deskripsi tidak tersedia.' !!}</p>
+          </div>
         </div>
-        
-
-        <!-- Card ketiga dengan kolom kecil -->
-        <div class="col-4">
-                <div class="card border-0 pt-2 px-2 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="fw-bolder">Pengumuman Terakhir</h5>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="../img/banner1.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="col">
-                                <a href="/pengumuman-dtl" class="text-decoration-none text-dark">
-                                    <h5 class="text-secondary">Pengumuman 1</h5>
-                                </a>                   
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="../img/banner1.jpg" alt="" class="img-fluid">
-                            </div>
-
-                            <div class="col">
-                                <a href="/pengumuman-dtl" class="text-decoration-none text-dark">
-                                    <h5 class="text-secondary">Pengumuman 1</h5>
-                                </a>                   
-                            </div>
-                        </div>
-
-                        <hr>
-
-
-                    </div>
-                </div>
+      @else
+        <!-- Tampilkan gambar jika data kosong -->
+        <div class="row justify-content-center">
+          <div class="col-md-6 p-0">
+            <img src="{{ asset('img/no-data.png') }}" alt="No Data Available" class="img-fluid w-100" >
+          </div>
         </div>
-
+      @endif
     </div>
+
+    <!-- Kolom untuk menampilkan pengumuman terbaru -->
+    <div class="col-md-4">
+      <!-- Card untuk pengumuman terbaru -->
+      <div class="card border-0 pt-2 px-2 shadow-sm">
+        <div class="card-body">
+          <h5 class="fw-bolder">pengumuman Terbaru</h5>
+
+          @foreach ($pengumumanTerbaru as $item)
+            <div class="row mb-3">
+              <div class="col-4">
+                <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : asset('img/no-image.png') }}" alt="Gambar pengumuman Terbaru" class="img-fluid">
+              </div>
+
+              <div class="col">
+                <a href="/pengumuman-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
+                  <h5 class="text-secondary">{{ $item->judul_publikasi }}</h5>
+                </a>
+                <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
+                <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
+              </div>
+            </div>
+            <hr>
+          @endforeach
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-
-    
 @endsection

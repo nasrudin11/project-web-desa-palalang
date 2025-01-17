@@ -69,7 +69,7 @@
                 <div class="text-center mb-3">
                     <div class="row justify-content-center">
                         <div class="col-md-4 mb-3">
-                            <img src="{{ asset('storage/' . $profile->foto_desa) }}" alt="Logo" class="img-fluid rounded w-100">
+                            <img src="{{ asset('storage/' . $profile->foto_desa) }}" alt="Desa" class="img-fluid rounded w-100">
                         </div>
                     </div>
                 </div>

@@ -84,13 +84,5 @@
           </li>
         </ul>
       </li>
-
-      <li class="menu-item {{ $title == 'Pengaduan' ? 'active' : '' }}">
-          <a href="/dashboard-pengaduan" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-chat"></i>
-            <div class="text-truncate" data-i18n="Chat">Pengaduan</div>
-            <span class="badge rounded-pill bg-danger ms-auto">5</span>
-          </a>
-      </li>
     </ul>
   </aside>

@@ -10,7 +10,7 @@
     >
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item">
-          <a href="/foto-dtl/" class="text-decoration-none text-dark">Home</a>
+          <a href="/" class="text-decoration-none text-dark">Home</a>
         </li>
         <li class="breadcrumb-item active fw-bold" aria-current="page">
           Foto
@@ -21,57 +21,41 @@
 </div>
 
 <!-- Konten Fasilitas Desa -->
+<div class="container mb-4">
 
-<div class="container my-3">
-    <h2>Foto</h2>
-    <div class="row">
+  <h3 class="text-start mb-3">Foto</h3> 
 
-        <div class="col">
-          <a href="/foto-dtl/">
-            <div class="card border-0 py-3 px-3 shadow">
-              <div class="card-body ">
-                <h2>Berita 1</h2>
-                
-              </div>
-            </div>
-          </a>
-        </div>
-  
-        <div class="col">
-          <a href="/foto-dtl">
-            <div class="card border-0 py-3 px-3 shadow">
-              <div class="card-body ">
-                <h2>Berita 1</h2>
-                
-              </div>
-            </div>
-          </a>
-        </div>
-  
-        <div class="col">
-          <a href="/foto-dtl">
-            <div class="card border-0 py-3 px-3 shadow">
-              <div class="card-body ">
-                <h2>Berita 1</h2>
-                
-              </div>
-            </div>
-          </a>
-        </div>
-  
-        <div class="col">
-          <a href="/foto-dtl">
-            <div class="card border-0 py-3 px-3 shadow">
-              <div class="card-body ">
-                <h2>Berita 1</h2>
-                
-              </div>
-            </div>
-          </a>
-        </div>
+  @if ($foto->isEmpty())
+      <!-- Tampilkan gambar jika data kosong -->
 
-      </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-0">
+            <img src="{{ asset('img/no-data.png') }}" alt="No Data Available" class="img-fluid w-100" >
+        </div>
+    </div>
+
+  @else 
+      
+    <!-- Tampilkan fasilitas jika data ada -->
+    <div class="row g-4">
+      @foreach ($foto as $item)
+        <div class="col-md-3" data-aos="fade-up" data-aos-duration="1000">
+          <a href="/foto-dtl/{{ $item->id_foto }}" class="text-decoration-none">
+              <div class="card border-0 shadow">
+                <img src="{{ $item->foto ? asset('storage/'.$item->foto) : asset('img/no-image.png') }}" class="card-img-top" alt="Foto">
+                <div class="card-body">
+                    <h5 class="card-title text-start">{{ $item->judul_foto }}</h5>
+                </div>
+            </div>
+          </a>  
+        </div>
+      @endforeach
+  </div>
+  
+  @endif
 </div>
+
+
 
     
 @endsection

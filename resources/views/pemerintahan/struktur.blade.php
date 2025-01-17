@@ -26,7 +26,7 @@
     <h2 class="mb-4">Struktur Organisasi</h2>
     <div class="card border-0 shadow">
         <div class="card-body ">
-            <img class="img-fluid" src="../img/struktur.png" alt="Struktur Organisasi">
+            <img class="img-fluid" src="{{ asset('storage/' . $struktur->gambar_struktur) }}" alt="Struktur Organisasi">
         </div>
     </div>
 </div>

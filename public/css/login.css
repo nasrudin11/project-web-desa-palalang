@@ -77,12 +77,29 @@
     color: #50B498;
 }
 
-/* Page Sign Up*/
-.btn.btn-signup-custom{
-    background: #50B498;
-    color: #ffffff;
+.login-left img {
+    max-width: 100%; /* Menjamin gambar tidak meluap */
+    height: auto; 
 }
 
 #offcanvasNavbar {
     background-color: #50B498; /* Warna hijau terang */
 }
+
+.embed-responsive iframe {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 500px !important; /* Sesuaikan jika diperlukan */
+}
+
+/* Ukuran video pada desktop (70%) dan mobile (100%) */
+.video-container {
+    width: 70% !important; /* Default width untuk desktop */
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        width: 100% !important; /* Lebar penuh untuk layar ponsel */
+    }
+}
+

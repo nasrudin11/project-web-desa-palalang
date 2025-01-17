@@ -12,13 +12,19 @@ use App\Models\Publikasi;
 use App\Models\StrukturOrganisasi;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         $data = Homepage::first();
-        return view ('admin.index', ['title' => 'Dashboard'], compact('data'));
+        $fotoCount = Foto::count();  
+        $videoCount = Video::count();  
+        $beritaCount = Publikasi::where('jenis_publikasi', 'berita')->count(); 
+        $pengumumanCount = Publikasi::where('jenis_publikasi', 'pengumuman')->count();  
+
+        return view('admin.index', ['title' => 'Dashboard'], compact('data', 'fotoCount', 'videoCount', 'beritaCount', 'pengumumanCount'));
     }
 
     public function dashboardHomepage()
@@ -91,6 +97,7 @@ class DashboardController extends Controller
     public function dashboardAdminProfile()
     {
         $data = Homepage::first();
-        return view('admin.profile', ['title' => 'Profile'], compact('data'));
+        $user = Auth::user();
+        return view('admin.profile', ['title' => 'Profile'], compact('data', 'user'));
     }
 }

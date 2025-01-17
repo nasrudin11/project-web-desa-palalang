@@ -22,60 +22,74 @@
 
 
   <!-- Konten Pengaduan -->
-
-  <div class="container my-4">
-    <h2>Form Pengaduan Desa</h2>
+  <div class="container mb-4">
+    <h2>Form Pengajuan Desa</h2>
     <div class="card border-0 py-3 px-3 shadow mx-auto" style="max-width: 600px;">
-      <div class="card-body">
-        <form>
-          <div class="mb-3 row">
-            <div class="col-md-6">
-              <label for="nama" class="form-label">Nama</label>
-              <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap">
-            </div>
-            <div class="col-md-6">
-              <label for="jenis-aduan" class="form-label">Dusun</label>
-              <select class="form-select" id="jenis-aduan">
-                <option selected>-- Pilih Dusun --</option>
-                <option value="1">Palalang</option>
-                <option value="2">Pogag</option>
-                <option value="3">Sorok</option>
-                <option value="4">Pandiyan</option>
-              </select>
-            </div>
-          </div>
-  
-          <div class="mb-3 row">
-            <div class="col-md-6">
-              <label for="jenis-aduan" class="form-label">Jenis Aduan</label>
-              <select class="form-select" id="jenis-aduan">
-                <option selected>-- Jenis Aduan --</option>
-                <option value="1">Ringan</option>
-                <option value="2">Berat</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="nomor-hp" class="form-label">Nomor HP</label>
-              <input type="text" class="form-control" id="nomor-hp" placeholder="Nomor HP">
-            </div>
-          </div>
-  
-          <div class="mb-3">
-            <label for="alamat" class="form-label">Alamat Sesuai KTP</label>
-            <input type="text" class="form-control" id="alamat" placeholder="Alamat">
-          </div>
-  
-          <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" rows="4" placeholder="Deskripsi"></textarea>
-          </div>
-  
-          <button type="submit" class="btn btn-primary">Kirim</button>
-        </form>
-      </div>
+        <div class="card-body">
+            <form id="formPengajuan">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nik" class="form-label">NIK</label>
+                    <input type="text" class="form-control" id="nik" placeholder="Nomor Induk Kependudukan" required>
+                </div>
+                <div class="mb-3">
+                    <label for="no-kk" class="form-label">Nomor KK</label>
+                    <input type="text" class="form-control" id="no-kk" placeholder="Nomor Kartu Keluarga" required>
+                </div>
+                <div class="mb-3">
+                    <label for="jenis-pengajuan" class="form-label">Jenis Pengajuan</label>
+                    <select class="form-select" id="jenis-pengajuan" required>
+                        <option value="" disabled selected>-- Pilih Jenis Pengajuan --</option>
+                        <option value="Pembuatan KTP">Pembuatan KTP</option>
+                        <option value="Pembuatan KK">Pembuatan KK</option>
+                        <option value="Pembuatan Akta Kelahiran">Pembuatan Akta Kelahiran</option>
+                        <option value="Pengajuan Lainnya">Pengajuan Lainnya</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Kirim</button>
+            </form>
+        </div>
     </div>
-  </div>
-  
+</div>
+
+<script>
+    document.getElementById("formPengajuan").addEventListener("submit", function (event) {
+        event.preventDefault(); // Mencegah reload halaman
+
+        // Ambil data dari form
+        const nama = document.getElementById("nama").value;
+        const nik = document.getElementById("nik").value;
+        const noKk = document.getElementById("no-kk").value;
+        const jenisPengajuan = document.getElementById("jenis-pengajuan").value;
+
+        // Format pesan WhatsApp dengan markdown
+        const message = `
+*Pengajuan Desa Baru*
+
+Halo, saya ingin melakukan pengajuan dengan rincian sebagai berikut:
+
+- *Nama*: ${nama}
+- *NIK*: ${nik}
+- *Nomor KK*: ${noKk}
+- *Jenis Pengajuan*: *${jenisPengajuan}*
+
+Mohon untuk ditindaklanjuti. Terima kasih!
+        `;
+
+        // Nomor WhatsApp tujuan (ganti dengan nomor tujuan Anda)
+        const waNumber = "6285606136076"; // Format nomor: tanpa "+" dan awali dengan kode negara
+
+        // Buat URL WhatsApp
+        const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+        // Redirect ke WhatsApp
+        window.open(waUrl, "_blank");
+    });
+</script>
 
     
 @endsection
+<!-- 6285606136076 -->

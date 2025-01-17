@@ -42,7 +42,6 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownProfil">
                                 <li><a class="dropdown-item" href="/struktur-organisasi">Struktur Organisasi</a></li>
                                 <li><a class="dropdown-item" href="/perangkat-desa">Perangkat Desa</a></li>
-                                <li><a class="dropdown-item" href="/lembaga-desa">Lembaga Desa</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -57,7 +56,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white me-2" href="/pengaduan">Pengaduan</a>
+                            <a class="nav-link text-white me-2" href="/pengaduan">Pengajuan</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white me-2" href="/login">Login</a>

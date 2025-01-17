@@ -91,7 +91,7 @@
                                 </td>
                                 <td>{{ $item->judul_video }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->created_at->format('d M Y') }}</td>
                                 <td>
                                     <!-- Tombol Edit -->
                                     <button class="btn btn-warning btn-sm shadow" data-bs-toggle="modal" data-bs-target="#editModal{{ $item->id_video }}">

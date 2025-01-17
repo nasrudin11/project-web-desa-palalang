@@ -18,5 +18,6 @@ class Publikasi extends Model
         'foto_publikasi'
     ];
 
-    public $timestamps = false;
+    public $timestamps = true;
+    const UPDATED_AT = null;
 }

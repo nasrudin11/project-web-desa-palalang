@@ -12,8 +12,11 @@
         <li class="breadcrumb-item">
           <a href="/" class="text-decoration-none text-dark">Home</a>
         </li>
-        <li class="breadcrumb-item active fw-bold" aria-current="page">
+        <li class="breadcrumb-item fw-bold" aria-current="page">
           Video
+        </li>
+        <li class="breadcrumb-item active fw-bold" aria-current="page">
+          {{ $video->judul_video }}
         </li>
       </ol>
     </nav>
@@ -21,21 +24,35 @@
 </div>
 
 <!-- Konten Video -->
+<div class="container mb-4">
+  <h3 class="mb-3">Video</h3>
 
-<div class="container my-3">
-    <h2>Video</h2>
-
-    <div class="card border-0 py-3 px-2 shadow mb-3">
-        <img src="../img/banner1.jpg" class="card-img-top" alt="Berita 1">
-        <div class="card-body ">
-            <h2 class="card-title">Berita 1</h2>
-            <p>08 - 09 - 2025</p>
-            <p>Content Galeri</p>
+  <div class="card border-0 py-3 px-2 shadow mb-3">
+    <!-- Video Responsif -->
+    @if ($video->video_url)
+        <div class="d-flex justify-content-center">
+            <div class="ratio ratio-16x9 video-container">
+                {!! $video->video_url !!}
+            </div>
         </div>
-    </div>
-         
+    @else
+        <p class="text-secondary text-center">Video tidak tersedia.</p>
+    @endif
 
+    <div class="card-body">
+        <!-- Judul Video -->
+        <h3 class="card-title">{{ $video->judul_video }}</h3>
+
+        <!-- Menambahkan ikon kalender sebelum tanggal -->
+        <p class="text-secondary small">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 
+            {{ $video->created_at->format('d-m-Y') }}
+        </p>
+
+        <!-- Konten Video -->
+        <p>{{ $video->deskripsi_publikasi ?? 'Konten tidak tersedia.'}} </p>
+    </div>
+  </div>
 </div>
 
-    
 @endsection

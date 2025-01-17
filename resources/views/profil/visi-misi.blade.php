@@ -22,10 +22,10 @@
 
   <!-- Konten Berita -->
 
-  <div class="container my-2">
+  <div class="container mb-4">
     <div class="card border-0 py-3 px-3 shadow">
       <div class="card-body ">
-        <h2 class="card-title">Visi & Misi</h2>
+        <h3 class="card-title mb-3">Visi & Misi</h3>
         <hr>
         <p class="card-text">{!! $profile->visi_misi !!}</p>
       </div>
