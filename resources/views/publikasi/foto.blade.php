@@ -44,7 +44,7 @@
               <div class="card border-0 shadow">
                 <img src="{{ $item->foto ? asset('storage/'.$item->foto) : asset('img/no-image.png') }}" class="card-img-top" alt="Foto">
                 <div class="card-body">
-                    <h5 class="card-title text-start">{{ $item->judul_foto }}</h5>
+                    <h5 class="card-title text-start fw-bold">{{ $item->judul_foto }}</h5>
                 </div>
             </div>
           </a>  

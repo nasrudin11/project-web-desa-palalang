@@ -32,7 +32,6 @@
           <!-- Jika tidak ada data berita -->
         <div class="col-12 text-center">
             <img src="{{ asset('img/no-data.png') }}" alt="No Data" class="img-fluid">
-            <p class="text-muted mt-2">Tidak ada berita yang tersedia.</p>
         </div>
 
       @else
@@ -52,7 +51,7 @@
                 <div class="card border-0 py-3 px-3 shadow-sm">
                     <div class="card-body">
                         <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-secondary">
-                            <h3 class="fw-normal">{{ $item->judul_publikasi }}</h3>
+                            <h3 class="fw-bold">{{ $item->judul_publikasi }}</h3>
                         </a>
                         <i class="fa fa-calendar text-secondary" aria-hidden="true"></i> 
                         <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
@@ -80,27 +79,32 @@
         <div class="card-body">
           <h5 class="fw-bolder">Berita Terbaru</h5>
 
+          @if ($beritaTerbaru->isEmpty())
+            <!-- Jika tidak ada data -->
+            <p class="text-center text-secondary">Data Not Available</p>
+          @else
+            @foreach ($beritaTerbaru as $item)
+              <div class="row mb-3">
+                <div class="col-4">
+                  <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : asset('img/no-image.png') }}" alt="Gambar Berita Terbaru" class="img-fluid">
+                </div>
 
-          @foreach ($beritaTerbaru as $item)
-            <div class="row mb-3">
-              <div class="col-4">
-                <img src="{{ $item->foto_publikasi ? asset('storage/'.$item->foto_publikasi) : asset('img/no-image.png') }}" alt="Gambar Berita Terbaru" class="img-fluid">
+                <div class="col">
+                  <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
+                    <p class="text-secondary fw-bold">{{ $item->judul_publikasi }}</p>
+                  </a>
+                  <i class="fa fa-calendar text-secondary" aria-hidden="true"></i> 
+                  <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
+                </div>
               </div>
-
-              <div class="col">
-                <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
-                  <h5 class="text-secondary">{{ $item->judul_publikasi }}</h5>
-                </a>
-                <i class="fa fa-calendar text-secondary" aria-hidden="true"></i> 
-                <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
-              </div>
-            </div>
-            <hr>
-          @endforeach
+              <hr>
+            @endforeach
+          @endif
 
         </div>
       </div>
     </div>
+
 
   </div>
 </div>

@@ -23,19 +23,18 @@ body {
     border: 0;
 }
 
-/* Efek zoom out pada navbar */
-.navbar {
-    transition: top 0.5s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+#navbar {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efek perubahan warna navbar */
-.navbar.scrolled {
-    background-color: #50B498 !important; /* Hijau terang */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Menambahkan bayangan untuk efek kedalaman */
+.scrolled {
+    background-color: #50B498; /* Hijau terang */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
+
 
 .navbar.transpare {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 /* Mengubah latar belakang offcanvas menjadi hijau */
@@ -51,4 +50,64 @@ body {
 /* Mengubah warna ikon close menjadi putih */
 .btn-close {
     filter: invert(1) sepia(0) saturate(0) hue-rotate(180deg);
+}
+
+
+.btn-hover {
+    background-color: #50B498; /* Warna default tombol */
+    color: #ffffff; /* Warna teks default */
+    border: none; /* Hilangkan border tambahan */
+    padding: 10px 20px; /* Jaga padding */
+    text-decoration: none; /* Hilangkan garis bawah */
+    display: inline-block; /* Pastikan inline untuk hover */
+    transition: all 0.3s ease; /* Efek transisi halus */
+}
+
+.btn-hover:hover {
+    background-color: #3e927b; /* Warna latar belakang saat hover */
+    color: #ffffff; /* Pastikan warna teks tetap terlihat */
+    transform: scale(1.05); /* Sedikit memperbesar tombol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan saat hover */
+}
+
+/* Default carousel height for larger screens */
+.carousel-inner {
+    height: 100vh;
+}
+
+/* Slide styling */
+.carousel-slide {
+    height: 100vh;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Text styling */
+.carousel-text {
+    font-size: 3rem;
+    text-align: center;
+    z-index: 2;
+    word-wrap: break-word; /* Breaks long words to fit within the container */
+    margin: 0 auto; /* Centers the element horizontally */
+    max-width: 80%; /* Restricts the width of the text */
+}
+
+
+@media (max-width: 768px) {
+    #offcanvasNavbar {
+        background-color: #50B498; /* Warna hijau terang */
+        width: 250px;
+    }
+
+    .carousel-inner, .carousel-slide {
+        height: 50vh; /* Set to 50% of viewport height */
+    }
+
+    .carousel-text {
+        font-size: 1.5rem; /* Smaller font size for small screens */
+        padding: 0 15px; /* Add padding for readability */
+    }
 }

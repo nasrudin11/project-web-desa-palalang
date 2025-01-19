@@ -27,7 +27,7 @@
 
         <!-- Copyright -->
         <div class="text-center mt-3">
-            <p class="mb-0">&copy; 2025 Jamil. All Rights Reserved.</p>
+            <p class="mb-0">&copy; 2025 Jamil - KKN 2 UTM. All Rights Reserved.</p>
         </div>
     </div>
 </footer>

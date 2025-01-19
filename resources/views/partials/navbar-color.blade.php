@@ -1,5 +1,5 @@
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg {{ $title == 'Login' ? 'position-fixed' : 'sticky-top' }} w-100" data-bs-target="#navbar" style="z-index: 10; background-color: #50B498">
+    <nav class="navbar navbar-expand-lg sticky-top w-100" data-bs-target="#navbar" style="z-index: 10; background-color: #50B498">
         <div class="container">
             <!-- Navbar Brand -->
             <a class="navbar-brand text-white" href="/">

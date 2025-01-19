@@ -173,6 +173,6 @@ class IndexController extends Controller
     public function indexPengaduan()
     {
         $data = Homepage::first();
-        return view('pengaduan', ['title' => 'Pengaduan'], compact('data'));
+        return view('pengaduan', ['title' => 'Pengajuan'], compact('data'));
     }
 }

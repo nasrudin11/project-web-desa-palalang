@@ -83,7 +83,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Foto</th>
-                                <th>judul_foto</th>
+                                <th>judul Foto</th>
                                 <th>Deskripsi</th>
                                 <th>Tanggal</th>
                                 <th>Action</th>

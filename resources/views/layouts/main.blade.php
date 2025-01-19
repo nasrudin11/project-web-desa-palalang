@@ -10,7 +10,6 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
     <title>Web Desa Palalang</title>
 
     <!-- Google Font (Poppins) -->
@@ -22,12 +21,13 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+ 
 
     <title>{{ $title }}</title>
 
 </head>
-<body style="background-color: #f8f8f8">
+<body class="d-flex flex-column min-vh-100" style="background-color: #f8f8f8">
 
     @include('partials.navbar')
 

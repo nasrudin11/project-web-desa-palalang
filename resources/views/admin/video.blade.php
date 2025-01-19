@@ -75,8 +75,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Link Video</th>
+                                <th>Video</th>
+                                <th>Judul Video</th>
                                 <th>Deskripsi</th>
                                 <th>Tangal</th>
                                 <th>Action</th>

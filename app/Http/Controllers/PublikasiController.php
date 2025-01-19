@@ -13,7 +13,7 @@ class PublikasiController extends Controller
     public function storeFoto(Request $request)
     {
         $request->validate([
-            'judul_foto' => 'required|string|max:50',
+            'judul_foto' => 'required|string|max:150',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:5120',
         ]);
@@ -43,7 +43,7 @@ class PublikasiController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'judul_foto' => 'required|string|max:255',
+            'judul_foto' => 'required|string|max:150',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi' => 'nullable|string|max:500',
         ]);
@@ -97,7 +97,7 @@ class PublikasiController extends Controller
     {
         // Validasi input
         $request->validate([
-            'judul_video' => 'required|string|max:50',
+            'judul_video' => 'required|string|max:150',
             'video_url' => 'required|string',
             'deskripsi' => 'nullable|string',
         ]);
@@ -117,7 +117,7 @@ class PublikasiController extends Controller
     {
         // Validasi input
         $request->validate([
-            'judul_video' => 'required|string|max:50',
+            'judul_video' => 'required|string|max:150',
             'video_url' => 'required|string',
             'deskripsi' => 'nullable|string',
         ]);
@@ -150,7 +150,7 @@ class PublikasiController extends Controller
     public function storeBerita(Request $request)
     {
         $request->validate([
-            'judul_publikasi' => 'required|string|max:50',
+            'judul_publikasi' => 'required|string|max:150',
             'foto_publikasi' => 'required|image|mimes:jpg,jpeg,png|max:5120',
             'deskripsi_publikasi' => 'required|string|min:10',
         ]);
@@ -180,7 +180,7 @@ class PublikasiController extends Controller
     public function editBerita(Request $request, $id_publikasi)
     {
         $request->validate([
-            'judul_publikasi' => 'required|string|max:50',
+            'judul_publikasi' => 'required|string|max:150',
             'foto_publikasi' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
             'deskripsi_publikasi' => 'required|string|min:10',
         ]);
@@ -228,7 +228,7 @@ class PublikasiController extends Controller
     public function storePengumuman(Request $request)
     {
         $request->validate([
-            'judul_publikasi' => 'required|string|max:50',
+            'judul_publikasi' => 'required|string|max:150',
             'foto_publikasi' => 'required|image|mimes:jpg,jpeg,png|max:5120',
             'deskripsi_publikasi' => 'required|string|min:10',
         ]);
@@ -258,7 +258,7 @@ class PublikasiController extends Controller
     public function editPengumuman(Request $request, $id_publikasi)
     {
         $request->validate([
-            'judul_publikasi' => 'required|string|max:50',
+            'judul_publikasi' => 'required|string|max:150',
             'foto_publikasi' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
             'deskripsi_publikasi' => 'required|string|min:10',
         ]);

@@ -45,7 +45,7 @@
         </p>
 
         <!-- Konten Foto -->
-        <p>{{ $foto->deskripsi ?? 'Konten tidak tersedia.' }}</p>
+        <p>{!! $foto->deskripsi ?? 'Konten tidak tersedia.' !!}</p>
     </div>
 </div>
 

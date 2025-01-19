@@ -239,7 +239,7 @@
                 </div>
     
                 <!-- Media Sosial -->
-                <h6 class="mt-4">Media Sosial</h6>
+                {{-- <h6 class="mt-4">Media Sosial</h6>
                 <div class="d-flex align-items-center  mb-3">
                     <label for="link_instagram" class="form-label mb-0" style="min-width: 100px;">Instagram</label>
                     <div class="w-100">
@@ -286,7 +286,7 @@
                         @enderror
                     </div>
                    
-                </div>
+                </div> --}}
 
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>

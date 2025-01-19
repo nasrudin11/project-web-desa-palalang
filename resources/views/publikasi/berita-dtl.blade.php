@@ -34,7 +34,7 @@
         <div class="card shadow-sm">
           <div class="card-body">
             <img src="{{ $berita->foto_publikasi ? asset('storage/'.$berita->foto_publikasi) : asset('img/no-image.png') }}" class="img-fluid w-100 mb-4" alt="Gambar Berita">
-            <h3>{{ $berita->judul_publikasi }}</h3>
+            <h3 class="fw-bolder">{{ $berita->judul_publikasi }}</h3>
             <div>
               <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
               <span class="text-secondary small">{{ $berita->created_at->format('d-m-Y') }}</span>
@@ -67,7 +67,7 @@
 
               <div class="col">
                 <a href="/berita-dtl/{{ $item->id_publikasi }}" class="text-decoration-none text-dark">
-                  <h5 class="text-secondary">{{ $item->judul_publikasi }}</h5>
+                  <p class="text-secondary fw-bold">{{ $item->judul_publikasi }}</p>
                 </a>
                 <i class="fa fa-calendar text-secondary" aria-hidden="true"></i>
                 <span class="text-secondary small">{{ $item->created_at->format('d-m-Y') }}</span>
